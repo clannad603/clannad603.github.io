@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>c++求斐波拉西数列</title>
+    <link href="/2021/10/02/c-%E6%A8%A1%E6%9D%BF%E5%85%83%E7%BC%96%E7%A8%8B/"/>
+    <url>/2021/10/02/c-%E6%A8%A1%E6%9D%BF%E5%85%83%E7%BC%96%E7%A8%8B/</url>
+    
+    <content type="html"><![CDATA[<h3 id="使用c-模板元编程求斐波拉西数列"><a href="#使用c-模板元编程求斐波拉西数列" class="headerlink" title="使用c++模板元编程求斐波拉西数列"></a>使用c++模板元编程求斐波拉西数列</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">template</span>&lt;<span class="hljs-keyword">int</span> num&gt;<br><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">fib</span></span><br><span class="hljs-class">&#123;</span><br>    <span class="hljs-class"><span class="hljs-keyword">enum</span> &#123;</span>result=fib&lt;num<span class="hljs-number">-1</span>&gt;::result+fib&lt;num<span class="hljs-number">-2</span>&gt;::result&#125;;<br>&#125;;<br><br><span class="hljs-keyword">template</span>&lt;&gt;<br><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">fib</span>&lt;</span><span class="hljs-number">0</span>&gt;<br>&#123;<br>    <span class="hljs-class"><span class="hljs-keyword">enum</span> &#123;</span>result=<span class="hljs-number">1</span>&#125;;<br>&#125;;<br><br><span class="hljs-keyword">template</span>&lt;&gt;<br><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">fib</span>&lt;</span><span class="hljs-number">1</span>&gt;<br>&#123;<br>    <span class="hljs-class"><span class="hljs-keyword">enum</span>&#123;</span> result=<span class="hljs-number">1</span>&#125;;<br>&#125;;<br></code></pre></td></tr></table></figure><h3 id="使用constexpr-关键字求"><a href="#使用constexpr-关键字求" class="headerlink" title="使用constexpr 关键字求"></a>使用constexpr 关键字求</h3><p>constexpr  允许编程者保证函数或对象的构造函数是编译时常量</p><p>在此处时都是允许在编译期对其进行求值</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-comment">// C++11</span><br><span class="hljs-function"><span class="hljs-keyword">constexpr</span> <span class="hljs-keyword">int</span> <span class="hljs-title">factorial_Cpp11</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">return</span> n == <span class="hljs-number">0</span> ? <span class="hljs-number">1</span> : n * <span class="hljs-built_in">factorial_Cpp11</span>(n - <span class="hljs-number">1</span>);<br>&#125;<br><br><span class="hljs-comment">// C++14</span><br><span class="hljs-function"><span class="hljs-keyword">constexpr</span> <span class="hljs-keyword">int</span> <span class="hljs-title">factorial_Cpp14</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">int</span> result = <span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; ++i)<br>        result *= i;<br>    <span class="hljs-keyword">return</span> result;<br>&#125;<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>算法学习笔记</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>cpp</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>求素数</title>
     <link href="/2021/10/02/%E6%B1%82%E7%B4%A0%E6%95%B0/"/>
     <url>/2021/10/02/%E6%B1%82%E7%B4%A0%E6%95%B0/</url>
