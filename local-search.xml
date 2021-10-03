@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>深度学习入门《2》神经网络</title>
+    <link href="/2021/10/03/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%85%A5%E9%97%A8%E3%80%8A2%E3%80%8B%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/"/>
+    <url>/2021/10/03/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%85%A5%E9%97%A8%E3%80%8A2%E3%80%8B%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/</url>
+    
+    <content type="html"><![CDATA[<h3 id="神经网络与感知机"><a href="#神经网络与感知机" class="headerlink" title="神经网络与感知机"></a>神经网络与感知机</h3><p>神经网络与感知机有很多的共同点，但是也存在着一些差异</p><ol><li>感知机虽然拥有即使是复杂函数也有表示他的可能性，理论支撑来着数字电路三门组合能表达出复杂的电路逻辑</li><li>但是，感知机设置权值的工作需要由人工来确定。</li><li>神经网络的一个特点就是，他可以通过自动地从数据中学习到合适的权重参数</li></ol><h3 id="神经网络示意图："><a href="#神经网络示意图：" class="headerlink" title="神经网络示意图："></a>神经网络示意图：</h3><p><img src="/2021/10/03/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%85%A5%E9%97%A8%E3%80%8A2%E3%80%8B%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/8uynp06sti.png"></p><p>最左边称为输入层，中间称为中间层（有时也被称为隐藏层【隐藏层的神经元肉眼无法看见】），最右边称为输出层</p><ol><li>有的书描述会将其称为3层网络，理由是构成网络的层数</li><li>有的书会将其描述为2层网络，理由是拥有权重的层数（输入层，输出层，中间层数量-1）</li></ol><h3 id="激活函数登场"><a href="#激活函数登场" class="headerlink" title="激活函数登场"></a>激活函数登场</h3><p>在感知机的y = x函数基础上进行了使用激活函数h来进行简化表示这种分情况的动作，</p><p><img src="/2021/10/03/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%85%A5%E9%97%A8%E3%80%8A2%E3%80%8B%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/v2-56822c1d68fc828df3f7a498ebbb4d8b_720w.jpg"></p><p>激活函数如同抽象化的生物学上的神经元之间传输使用的某种生化信号（涉及轴突树突之间信号的传递），这里表达的就是如同我们常识所知道的那样，当化学量达到一定浓度时，神经元之间信号传递才有效，所以这里的激活函数就起到了控制这种化学传递的一个阀</p><img src="/2021/10/03/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%85%A5%E9%97%A8%E3%80%8A2%E3%80%8B%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/640.png" style="zoom:67%;"><h3 id="常用的激活函数"><a href="#常用的激活函数" class="headerlink" title="常用的激活函数"></a>常用的激活函数</h3><h4 id="sigmoid函数"><a href="#sigmoid函数" class="headerlink" title="sigmoid函数"></a>sigmoid函数</h4><p>Sigmoid函数是一个在<a href="https://baike.baidu.com/item/%E7%94%9F%E7%89%A9%E5%AD%A6/1358">生物学</a>中常见的<a href="https://baike.baidu.com/item/S%E5%9E%8B%E5%87%BD%E6%95%B0/19178062">S型函数</a>，也称为<a href="https://baike.baidu.com/item/S%E5%9E%8B%E7%94%9F%E9%95%BF%E6%9B%B2%E7%BA%BF/5581189">S型生长曲线</a>。 [1] 在信息科学中，由于其单增以及反函数单增等性质，Sigmoid函数常被用作<a href="https://baike.baidu.com/item/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/16600562">神经网络</a>的<a href="https://baike.baidu.com/item/%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0/2520792">激活函数</a>，将变量映射到0,1之间。</p><p><img src="/2021/10/03/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%85%A5%E9%97%A8%E3%80%8A2%E3%80%8B%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/1285295-20180727154358729-854643533.png"></p><p><img src="/2021/10/03/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%85%A5%E9%97%A8%E3%80%8A2%E3%80%8B%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/d009b3de9c82d158dfb4e7218a0a19d8bc3e426f.jpg"></p><p>使用python 描述：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">sigmoid</span>(<span class="hljs-params">x</span>):</span><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">1</span> / (<span class="hljs-number">1</span> + np.exp(-x))<br></code></pre></td></tr></table></figure><h4 id="阶跃函数"><a href="#阶跃函数" class="headerlink" title="阶跃函数"></a>阶跃函数</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">step_function</span>(<span class="hljs-params">x</span>):</span><br>    <span class="hljs-keyword">return</span> np.array(x &gt; <span class="hljs-number">0</span>, dtype=np.<span class="hljs-built_in">int</span>)<br></code></pre></td></tr></table></figure><p>图片绘制：</p><img src="/2021/10/03/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%85%A5%E9%97%A8%E3%80%8A2%E3%80%8B%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/image-20211003110403947.png" alt="image-20211003110403947" style="zoom:67%;"><p>两者都是非线性函数</p><p>神经网络的激活函数必须是非线性函数，否则加深神经网络的层数将失去意义</p><h4 id="ReLU函数"><a href="#ReLU函数" class="headerlink" title="ReLU函数"></a>ReLU函数</h4><p>其在输入大于0的时候直接输出该值，在输入小于等于0时，输出0</p><p>使用python实现：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">relu</span>(<span class="hljs-params">x</span>):</span><br>    <span class="hljs-keyword">return</span> np.maximum(<span class="hljs-number">0</span>, x)<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>深度学习</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>神经网络</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>c++求斐波拉西数列</title>
     <link href="/2021/10/02/c++%E6%A8%A1%E6%9D%BF%E5%85%83%E7%BC%96%E7%A8%8B/"/>
     <url>/2021/10/02/c++%E6%A8%A1%E6%9D%BF%E5%85%83%E7%BC%96%E7%A8%8B/</url>
