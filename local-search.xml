@@ -8,9 +8,21 @@
     <link href="/2021/10/04/numpy%E5%A4%9A%E7%BB%B4%E6%95%B0%E7%BB%84%E8%BF%90%E7%AE%97/"/>
     <url>/2021/10/04/numpy%E5%A4%9A%E7%BB%B4%E6%95%B0%E7%BB%84%E8%BF%90%E7%AE%97/</url>
     
-    <content type="html"><![CDATA[]]></content>
+    <content type="html"><![CDATA[<h3 id="numpy创建矩阵及简单操作"><a href="#numpy创建矩阵及简单操作" class="headerlink" title="numpy创建矩阵及简单操作"></a>numpy创建矩阵及简单操作</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br><br>A = np.array([<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>])<br><br><span class="hljs-built_in">print</span>(A)<span class="hljs-comment">#打印A</span><br><br><span class="hljs-built_in">print</span>(np.ndim(A))<span class="hljs-comment">#打印数组的维度</span><br><br><span class="hljs-built_in">print</span>(A.shape)<span class="hljs-comment">#打印A的形状,其返回值是一个元组</span><br><br><span class="hljs-string">&quot;&quot;&quot;对于多维数组而言&quot;&quot;&quot;</span><br>B = np.array([[<span class="hljs-number">1</span>,<span class="hljs-number">2</span>],[<span class="hljs-number">3</span>,<span class="hljs-number">4</span>],[<span class="hljs-number">5</span>,<span class="hljs-number">6</span>]])<br><span class="hljs-built_in">print</span>(B)<br><span class="hljs-built_in">print</span>(B.shape)<br></code></pre></td></tr></table></figure><p>对此的输出结果是</p><p><img src="/2021/10/04/numpy%E5%A4%9A%E7%BB%B4%E6%95%B0%E7%BB%84%E8%BF%90%E7%AE%97/image-20211004201108415.png" alt="image-20211004201108415"></p><h3 id="矩阵乘法"><a href="#矩阵乘法" class="headerlink" title="矩阵乘法"></a>矩阵乘法</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python">A = np.array([[<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>],[<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">6</span>]])<br>B = np.array([[<span class="hljs-number">1</span>,<span class="hljs-number">2</span>],[<span class="hljs-number">3</span>,<span class="hljs-number">4</span>],[<span class="hljs-number">5</span>,<span class="hljs-number">6</span>]])<br><br><span class="hljs-built_in">print</span>(np.dot(A,B))<span class="hljs-comment">#矩阵相乘，满足线性代数运算</span><br><br></code></pre></td></tr></table></figure>]]></content>
     
     
+    <categories>
+      
+      <category>深度学习</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>numpy</tag>
+      
+    </tags>
     
   </entry>
   
