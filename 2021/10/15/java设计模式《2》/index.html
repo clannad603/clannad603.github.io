@@ -24,8 +24,10 @@
 <meta property="og:description" content="Java设计模式《2》软件设计七大原则1.开闭原则开闭原则（Open Closed Principle，OCP）由勃兰特·梅耶（Bertrand Meyer）提出，他在 1988 年的著作《面向对象软件构造》（Object Oriented Software Construction）中提出：软件实体应当对扩展开放，对修改关闭（Software entities should be open fo">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://c.biancheng.net/uploads/allimg/181113/3-1Q11311094H32.gif">
+<meta property="og:image" content="https://clannad603.github.io/2021/10/15/java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E3%80%8A2%E3%80%8B/3-1Q113160133151.gif">
+<meta property="og:image" content="https://clannad603.github.io/2021/10/15/java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E3%80%8A2%E3%80%8B/3-1Q11316034X57.gif">
 <meta property="article:published_time" content="2021-10-15T13:32:51.000Z">
-<meta property="article:modified_time" content="2021-10-15T15:05:41.158Z">
+<meta property="article:modified_time" content="2021-10-17T15:31:38.052Z">
 <meta property="article:author" content="HuangRui">
 <meta property="article:tag" content="java">
 <meta property="article:tag" content="设计模式">
@@ -199,7 +201,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      3.4k 字
+      8.7k 字
     </span>
   
 
@@ -208,7 +210,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      10 分钟
+      27 分钟
     </span>
   
 
@@ -249,7 +251,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2021年10月15日 晚上
+                  本文最后更新于：2021年10月17日 晚上
                 
               </p>
             
@@ -274,7 +276,7 @@
 <p>阐述了什么时候应该使用继承，什么时候不应该使用继承</p>
 <p>其作用为：</p>
 <ul>
-<li>子类可以实现父类的抽象方法，但不能覆盖父类的非抽象方法</li>
+<li>子类可以实现父类的抽象方法，但不能覆盖父类的非抽象方法（很多时候没有做到这一点</li>
 <li>子类中可以增加自己特有的方法</li>
 <li>当子类的方法重载父类的方法时，方法的前置条件（即方法的输入参数）要比父类的方法更宽松</li>
 <li>当子类的方法实现父类的方法时（重写/重载或实现抽象方法），方法的后置条件（即方法的的输出/返回值）要比父类的方法更严格或相等</li>
@@ -292,7 +294,7 @@
 <img src="http://c.biancheng.net/uploads/allimg/181113/3-1Q11311094H32.gif" srcset="/img/loading.gif" lazyload alt="“几维鸟不是鸟”实例的类图">
 
 <p>这时我们就需要重新考虑一下几维鸟该继承谁了，比如继承动物</p>
-<h4 id="3-依赖倒置原则"><a href="#3-依赖倒置原则" class="headerlink" title="3.依赖倒置原则"></a>3.依赖倒置原则</h4><p>依赖倒置原则的原始定义为：高层模块不应该依赖低层模块，两者都应该依赖其抽象；抽象不应该依赖细节，细节应该依赖抽象（High level modules shouldnot depend upon low level modules.Both should depend upon abstractions.Abstractions should not depend upon details. Details should depend upon abstractions）。其核心思想是：要面向接口编程，不要面向实现编程。</p>
+<h4 id="3-依赖倒置原则"><a href="#3-依赖倒置原则" class="headerlink" title="3.依赖倒置原则"></a>3.依赖倒置原则</h4><p>依赖倒置原则的原始定义为：高层模块不应该依赖低层模块，两者都应该依赖其抽象；抽象不应该依赖细节，细节应该依赖抽象（High level modules shouldnot depend upon low level modules.Both should depend upon abstractions.Abstractions should not depend upon details. Details should depend upon abstractions）。其核心思想是：要<strong>面向接口编程</strong>，不要面向实现编程。</p>
 <h5 id="1-依赖倒置原则的作用"><a href="#1-依赖倒置原则的作用" class="headerlink" title="1.依赖倒置原则的作用"></a>1.依赖倒置原则的作用</h5><ul>
 <li>依赖倒置原则可以降低类间的耦合性。</li>
 <li>依赖倒置原则可以提高系统的稳定性。</li>
@@ -319,6 +321,7 @@
 <li>一个职责的变化可能会削弱或者抑制这个类实现其他职责的能力；</li>
 <li>当客户端需要该对象的某一个职责时，不得不将其他不需要的职责全都包含进来，从而造成冗余代码或代码的浪费。</li>
 </ol>
+<p>个人理解就是：对类进行解耦合</p>
 <h5 id="1-单一职责原则的作用"><a href="#1-单一职责原则的作用" class="headerlink" title="1.单一职责原则的作用"></a>1.单一职责原则的作用</h5><p>单一职责原则的核心就是控制类的粒度大小、将对象解耦、提高其内聚性。如果遵循单一职责原则将有以下优点。</p>
 <ul>
 <li>降低类的复杂度。一个类只负责一项职责，其逻辑肯定要比负责多项职责简单得多。（实际开发中很难遇到，一般一个类都有许多功能</li>
@@ -328,7 +331,86 @@
 </ul>
 <h5 id="2-单一指责原则的实现"><a href="#2-单一指责原则的实现" class="headerlink" title="2.单一指责原则的实现"></a>2.单一指责原则的实现</h5><p>单一职责原则的实现需要设计者发现类的职责并将其划分，对设计者分析能力有一定要求，同时，不同人对职责划分也有不同的看法，所以很难把握</p>
 <p>但是举个简单的例子，假如在大学生平时生活中，班级上有不同的班委，他们负责的功能也并不相同，这样，根据他们的职责进行划分，并且他们的职责重叠部分也尽可能的少，这样，我们能很快的找到谁该干什么。这就是个人对单一职责的理解</p>
-<p>5.接口隔离原则</p>
+<h4 id="5-接口隔离原则"><a href="#5-接口隔离原则" class="headerlink" title="5.接口隔离原则"></a>5.接口隔离原则</h4><p>接口隔离原则（Interface Segregation Principle，ISP）要求程序员尽量将臃肿庞大的接口拆分成更小的和更具体的接口，让接口中只包含客户感兴趣的方法。</p>
+<p>客户端不应该被迫依赖于它不使用的方法（Clients should not be forced to depend on methods they do not use）。该原则还有另外一个定义：一个类对另一个类的依赖应该建立在最小的接口上（The dependency of one class to another one should depend on the smallest possible interface）。</p>
+<p>要为各个类建立它们需要的专用接口</p>
+<p>我的理解：接口专一化加强，将接口解耦</p>
+<h5 id="1-接口隔离原则的作用："><a href="#1-接口隔离原则的作用：" class="headerlink" title="1.接口隔离原则的作用："></a>1.接口隔离原则的作用：</h5><ul>
+<li>接口尽量小，但是要有限度。一个接口只服务于一个子模块或业务逻辑。</li>
+<li>为依赖接口的类定制服务。只提供调用者需要的方法，屏蔽不需要的方法。</li>
+<li>了解环境，拒绝盲从。每个项目或产品都有选定的环境因素，环境不同，接口拆分的标准就不同深入了解业务逻辑。</li>
+<li>提高内聚，减少对外交互。使接口用最少的方法去完成最多的事情。</li>
+</ul>
+<h5 id="2-接口隔离原则的实现："><a href="#2-接口隔离原则的实现：" class="headerlink" title="2.接口隔离原则的实现："></a>2.接口隔离原则的实现：</h5><ul>
+<li>接口尽量小，但是要有限度。一个接口只服务于一个子模块或业务逻辑。</li>
+<li>为依赖接口的类定制服务。只提供调用者需要的方法，屏蔽不需要的方法。</li>
+<li>了解环境，拒绝盲从。每个项目或产品都有选定的环境因素，环境不同，接口拆分的标准就不同深入了解业务逻辑。</li>
+<li>提高内聚，减少对外交互。使接口用最少的方法去完成最多的事情。</li>
+</ul>
+<p>例如，一个学生拥有许多能力，比如，学习，打电动，吃饭睡觉等生活能力</p>
+<p>我们可以考虑设置三个接口，分别为学习，打电动，生活</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TestDemo</span> </span>&#123;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;<br>        Student s = <span class="hljs-keyword">new</span> Student();<br>        s.eat();<br>        s.playGame();<br>        s.sleep();<br>    &#125;<br>&#125;<br><span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">Study</span></span>&#123;<br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">study</span><span class="hljs-params">()</span></span>;<br>&#125;<br><br><span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">PlayGame</span></span>&#123;<br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">playGame</span><span class="hljs-params">()</span></span>;<br>&#125;<br><br><span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">LifeAbility</span></span>&#123;<br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">eat</span><span class="hljs-params">()</span></span>;<br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">sleep</span><span class="hljs-params">()</span></span>;<br>&#125;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Student</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Study</span>,<span class="hljs-title">LifeAbility</span>,<span class="hljs-title">PlayGame</span></span>&#123;<br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">study</span><span class="hljs-params">()</span> </span>&#123;<br>        System.out.println(<span class="hljs-string">&quot;I am study&quot;</span>);<br>    &#125;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">playGame</span><span class="hljs-params">()</span> </span>&#123;<br>        System.out.println(<span class="hljs-string">&quot;I am playGame&quot;</span>);<br>    &#125;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">sleep</span><span class="hljs-params">()</span> </span>&#123;<br>        System.out.println(<span class="hljs-string">&quot;I am sleep&quot;</span>);<br>    &#125;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">eat</span><span class="hljs-params">()</span> </span>&#123;<br>        System.out.println(<span class="hljs-string">&quot;I am eat&quot;</span>);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>与单一职责原则不同：</p>
+<p>单一职责原则原注重的是职责；而接口隔离原则注重对接口依赖的隔离。其二，单一职责原则主要是约束类，其次才是接口和方法，它针对的是程序中的实现和细节；而接口隔离原则主要约束接口接口，主要针对抽象，针对程序整体框架的构建。</p>
+<h4 id="6-迪米特法则"><a href="#6-迪米特法则" class="headerlink" title="6.迪米特法则"></a>6.迪米特法则</h4><p>迪米特法则（Law of Demeter，LoD）又叫作最少知识原则（Least Knowledge Principle，LKP)</p>
+<p>定义为：只与你的直接朋友交谈，不跟“陌生人”说话（Talk only to your immediate friends and not to strangers）。其含义是：如果两个软件实体无须直接通信，那么就不应当发生直接的相互调用，可以通过第三方转发该调用。其目的是降低类之间的耦合度，提高模块的相对独立性。</p>
+<p>迪米特法则中的“朋友”是指：当前对象本身、当前对象的成员对象、当前对象所创建的对象、当前对象的方法参数等，这些对象同当前对象存在关联、聚合或组合关系，可以直接访问这些对象的方法。</p>
+<h5 id="1-迪米特法则的作用"><a href="#1-迪米特法则的作用" class="headerlink" title="1.迪米特法则的作用"></a>1.迪米特法则的作用</h5><ol>
+<li>降低了类之间的耦合度，提高了模块的相对独立性。</li>
+<li>由于亲合度降低，从而提高了类的可复用率和系统的扩展性。</li>
+</ol>
+<p>个人理解：安卓中的mvp架构就是基于迪米特法则，在view与model之间使用了中介来进行相互调用，从而避免了view和model直接调用，目的是确保了高内聚和低耦合，但是同时导致了接口过多，略显繁琐</p>
+<h5 id="2-迪米特法则的实现方法"><a href="#2-迪米特法则的实现方法" class="headerlink" title="2.迪米特法则的实现方法"></a>2.迪米特法则的实现方法</h5><ol>
+<li>在类的划分上，应该创建弱耦合的类。类与类之间的耦合越弱，就越有利于实现可复用的目标。</li>
+<li>在类的结构设计上，尽量降低类成员的访问权限。</li>
+<li>在类的设计上，优先考虑将一个类设置成不变类。</li>
+<li>在对其他类的引用上，将引用其他对象的次数降到最低。</li>
+<li>不暴露类的属性成员，而应该提供相应的访问器（set 和 get 方法）。</li>
+<li>谨慎使用序列化（Serializable）功能。（类或接口两端未同步更新，引发序列化失败，，项目管理易疏忽）</li>
+</ol>
+<p>序列化：</p>
+<ol>
+<li>一个对象可以被表示为一个字节序列，该字节序列包括该对象的数据、有关对象的类型的信息和存储在对象中数据的类型。</li>
+<li>将序列化对象写入文件之后，可以从文件中读取出来，并且对它进行反序列化，也就是说，对象的类型信息、对象的数据，还有对象中的数据类型可以用来在内存中新建对象。</li>
+</ol>
+<p>对象的二进制</p>
+<p>典型例子是明星，粉丝，公司之间的关系，明星不可能直接与粉丝接触，也不好直接与公司接触，所以此时需要工具人经纪人的出现，代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TestDemo2</span> </span>&#123;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;<br>        Star s = <span class="hljs-keyword">new</span> Star();<br>        s.setName(<span class="hljs-string">&quot;S&quot;</span>);<br>        Fans f = <span class="hljs-keyword">new</span> Fans();<br>        f.setName(<span class="hljs-string">&quot;SFan&quot;</span>);<br>        Company c= <span class="hljs-keyword">new</span> Company();<br>        c.setName(<span class="hljs-string">&quot;C&quot;</span>);<br>        Agent a = <span class="hljs-keyword">new</span> Agent();<br>        a.setMyCompany(c);<br>        a.setMyStar(s);<br>        a.setMyFans(f);<br>        a.meetWithCompany();<br>    &#125;<br>&#125;<br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Agent</span></span>&#123;<br>    <span class="hljs-keyword">private</span> Star myStar;<br>    <span class="hljs-keyword">private</span> Fans myFans;<br>    <span class="hljs-keyword">private</span> Company myCompany;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> Star <span class="hljs-title">getMyStar</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">return</span> myStar;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setMyStar</span><span class="hljs-params">(Star myStar)</span> </span>&#123;<br>        <span class="hljs-keyword">this</span>.myStar = myStar;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> Fans <span class="hljs-title">getMyFans</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">return</span> myFans;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setMyFans</span><span class="hljs-params">(Fans myFans)</span> </span>&#123;<br>        <span class="hljs-keyword">this</span>.myFans = myFans;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> Company <span class="hljs-title">getMyCompany</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">return</span> myCompany;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setMyCompany</span><span class="hljs-params">(Company myCompany)</span> </span>&#123;<br>        <span class="hljs-keyword">this</span>.myCompany = myCompany;<br>    &#125;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">meetWithFans</span><span class="hljs-params">()</span></span>&#123;<br>        System.out.println(myStar.getName()+<span class="hljs-string">&quot;is meeting with&quot;</span> +myFans.getName());<br>    &#125;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">meetWithCompany</span><span class="hljs-params">()</span></span>&#123;<br>        System.out.println(myStar.getName()+<span class="hljs-string">&quot;is meeting with &quot;</span>+myFans.getName());<br>    &#125;<br>&#125;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Star</span></span>&#123;<br>    <span class="hljs-keyword">private</span> String name;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getName</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">return</span> name;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setName</span><span class="hljs-params">(String name)</span> </span>&#123;<br>        <span class="hljs-keyword">this</span>.name = name;<br>    &#125;<br>&#125;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Fans</span></span>&#123;<br>    <span class="hljs-keyword">private</span> String name;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getName</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">return</span> name;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setName</span><span class="hljs-params">(String name)</span> </span>&#123;<br>        <span class="hljs-keyword">this</span>.name = name;<br>    &#125;<br>&#125;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Company</span></span>&#123;<br>    <span class="hljs-keyword">private</span> String name;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getName</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">return</span> name;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setName</span><span class="hljs-params">(String name)</span> </span>&#123;<br>        <span class="hljs-keyword">this</span>.name = name;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="7-合成复用原则"><a href="#7-合成复用原则" class="headerlink" title="7.合成复用原则"></a>7.合成复用原则</h4><p>合成复用原则（Composite Reuse Principle，CRP）又叫组合/聚合复用原则（Composition/Aggregate Reuse Principle，CARP）。它要求在软件复用时，要尽量先使用组合或者聚合等关联关系来实现，其次才考虑使用继承关系来实现。</p>
+<p>如果要使用继承关系，则必须严格遵循里氏替换原则。合成复用原则同里氏替换原则相辅相成的，两者都是开闭原则的具体实现规范。</p>
+<p>个人理解：由于继承很多时候存在改变父类方法即重写情况，这一点是违背里氏替换原则（开闭原则的实现 ）的，组合很大程度上能避免这个情况，就是把原本通过继承得到的类，改为在新类中维持一个原本的类，通过新类调用原本类的方法，并且此时扩展性也得到了提高，即可以组合多个类来增强类的功能</p>
+<h5 id="1-合成复用原则的作用："><a href="#1-合成复用原则的作用：" class="headerlink" title="1.合成复用原则的作用："></a>1.合成复用原则的作用：</h5><h6 id="1-继承复用："><a href="#1-继承复用：" class="headerlink" title="1.继承复用："></a>1.继承复用：</h6><p>​        继承复用虽然有简单和易实现的优点，但它也存在以下缺点：</p>
+<ol>
+<li>继承复用破坏了类的封装性。因为继承会将父类的实现细节暴露给子类，父类对子类是透明的，所以这种复用又称为“白箱”复用。</li>
+<li>子类与父类的耦合度高。父类的实现的任何改变都会导致子类的实现发生变化，这不利于类的扩展与维护。</li>
+<li>它限制了复用的灵活性。从父类继承而来的实现是静态的，在编译时已经定义，所以在运行时不可能发生变化</li>
+</ol>
+<h6 id="2-组合复用："><a href="#2-组合复用：" class="headerlink" title="2.组合复用："></a>2.组合复用：</h6><p>​    将已有对象纳入新对象中，使之成为新对象的一部分，新对象可以调用已有对象的功能</p>
+<ol>
+<li>它维持了类的封装性。因为成分对象的内部细节是新对象看不见的，所以这种复用又称为“黑箱”复用。</li>
+<li>新旧类之间的耦合度低。这种复用所需的依赖较少，新对象存取成分对象的唯一方法是通过成分对象的接口。</li>
+<li>复用的灵活性高。这种复用可以在运行时动态进行，新对象可以动态地引用与成分对象类型相同的对象。</li>
+</ol>
+<h5 id="2-合成复用原则的实现："><a href="#2-合成复用原则的实现：" class="headerlink" title="2.合成复用原则的实现："></a>2.合成复用原则的实现：</h5><p>由于合成复用原则提倡以组合来代替继承，在安卓上的体现可能在，最新的compose技术，以组合的方式代替原本的继承view体系，即实现同一个复杂控件，在view体系中button继承textview,textview又继承view，这样的继承关系过于复杂。而在 compose中，我们只需要对view进行组合即可完成同样的布局。</p>
+<p>在 java代码上，例如汽车分类</p>
+<p>汽车按“动力源”划分可分为汽油汽车、电动汽车等；按“颜色”划分可分为白色汽车、黑色汽车和红色汽车等。如果同时考虑这两种分类，其组合就很多。图 1 所示是用继承：关系实现的汽车分类的类图。</p>
+<p><img src="/2021/10/15/java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E3%80%8A2%E3%80%8B/3-1Q113160133151.gif" srcset="/img/loading.gif" lazyload alt="用继承关系实现的汽车分类的类图"></p>
+<p>而采用组合关系的话：</p>
+<p><img src="/2021/10/15/java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E3%80%8A2%E3%80%8B/3-1Q11316034X57.gif" srcset="/img/loading.gif" lazyload alt="用组合关系实现的汽车分类的类图"></p>
+<p>很明显，减少了继承层数，如果出现问题，也能更容易发现错误，在扩展性上，只需要在添加新的功能类即可</p>
+<h4 id="对七种原则的简单理解"><a href="#对七种原则的简单理解" class="headerlink" title="对七种原则的简单理解"></a>对七种原则的简单理解</h4><ul>
+<li>开闭原则强调扩展开放，修改避免</li>
+<li>里氏替换原则强调类继承时尽可能不要修改父类</li>
+<li>依赖倒置原则强调面向接口编程而不是面向实现编程，上层不依赖下层，下层依赖上层，我们应该优先接口化，在去实现接口。</li>
+<li>单一职责原则强调一个类的功能应该单一化，不是你该干的事就不应该出现在类中，换句话说就是各施其职</li>
+<li>接口隔离原则强调接口的细化，一个接口不应该过于庞大</li>
+<li>迪米特原则强调依赖之间的隔离，减少不相干事物的直接链接，在需要时通过中介来进行链接，降低耦合度</li>
+<li>合成复用原则强调组合代替继承</li>
+</ul>
+<p>访问加限制，函数要节俭，依赖不允许，动态加接口，父类要抽象，扩展不更改。</p>
+<p>根本目的为了降低对象之间的耦合，增加程序的可复用性、可扩展性和可维护性。</p>
 
             </div>
             <hr>
