@@ -1,26 +1,22 @@
+
+
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
 <head>
   <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width">
-<meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.4.0">
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
-  <link rel="mask-icon" href="/images/logo.svg" color="#222">
-
-<link rel="stylesheet" href="/css/main.css">
-
-
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
-
-<script class="next-config" data-name="main" type="application/json">{"hostname":"clannad603.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
-<meta name="description" content="Kotlinkotlin是什么？Kotlin 是一种在 Java 虚拟机上运行的静态类型编程语言，被称之为 Android 世界的Swift（确实长的很像），由 JetBrains 设计开发并开源。 Kotlin 可以编译成Java字节码，也可以编译成 JavaScript，方便在没有 JVM 的设备上运行。 在Google I&#x2F;O 2017中，Google 宣布 Kotlin 成为 Androi">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="HuangRui">
+  <meta name="keywords" content="">
+  <meta name="description" content="Kotlinkotlin是什么？Kotlin 是一种在 Java 虚拟机上运行的静态类型编程语言，被称之为 Android 世界的Swift（确实长的很像），由 JetBrains 设计开发并开源。 Kotlin 可以编译成Java字节码，也可以编译成 JavaScript，方便在没有 JVM 的设备上运行。 在Google I&#x2F;O 2017中，Google 宣布 Kotlin 成为 Androi">
 <meta property="og:type" content="article">
 <meta property="og:title" content="kotlin">
 <meta property="og:url" content="https://clannad603.github.io/2021/10/03/kotlin/index.html">
@@ -31,207 +27,231 @@
 <meta property="article:modified_time" content="2021-10-03T05:49:42.912Z">
 <meta property="article:author" content="HuangRui">
 <meta property="article:tag" content="kotlin语言基础">
-<meta name="twitter:card" content="summary">
-
-
-<link rel="canonical" href="https://clannad603.github.io/2021/10/03/kotlin/">
-
-
-
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://clannad603.github.io/2021/10/03/kotlin/","path":"2021/10/03/kotlin/","title":"kotlin"}</script>
-
-<script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>kotlin | 普通重邮学生的blog</title>
+<meta name="twitter:card" content="summary_large_image">
   
+  <title>kotlin - 普通重邮学生的blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
 
 
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
 
-
-  <noscript>
-    <link rel="stylesheet" href="/css/noscript.css">
-  </noscript>
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
-  <div class="headband"></div>
-
-  <main class="main">
-    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-container">
-  <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏" role="button">
-    </div>
-  </div>
-
-  <div class="site-meta">
-
-    <a href="/" class="brand" rel="start">
-      <i class="logo-line"></i>
-      <h1 class="site-title">普通重邮学生的blog</h1>
-      <i class="logo-line"></i>
-    </a>
-  </div>
-
-  <div class="site-nav-right">
-    <div class="toggle popup-trigger">
-    </div>
-  </div>
-</div>
-
-
-
-
-
-
-
-</div>
-        
   
-  <div class="toggle sidebar-toggle" role="button">
-    <span class="toggle-line"></span>
-    <span class="toggle-line"></span>
-    <span class="toggle-line"></span>
-  </div>
-
-  <aside class="sidebar">
-
-    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
-      <ul class="sidebar-nav">
-        <li class="sidebar-nav-toc">
-          文章目录
-        </li>
-        <li class="sidebar-nav-overview">
-          站点概览
-        </li>
-      </ul>
-
-      <div class="sidebar-panel-container">
-        <!--noindex-->
-        <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Kotlin"><span class="nav-number">1.</span> <span class="nav-text">Kotlin</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#kotlin%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-number">1.1.</span> <span class="nav-text">kotlin是什么？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Kotlin%E5%A5%BD%E5%A4%84%E9%83%BD%E6%9C%89%E5%95%A5%EF%BC%9F"><span class="nav-number">1.2.</span> <span class="nav-text">Kotlin好处都有啥？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Kotlin%E7%9A%84%E4%B8%80%E4%BA%9B%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95"><span class="nav-number">1.3.</span> <span class="nav-text">Kotlin的一些基础语法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%8F%8A%E7%AE%80%E5%8D%95%E6%93%8D%E4%BD%9C"><span class="nav-number">1.3.1.</span> <span class="nav-text">基本数据类型及简单操作</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E5%B8%B8%E9%87%8F"><span class="nav-number">1.3.1.1.</span> <span class="nav-text">字符常量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%80%9A%E7%94%A8%E7%B1%BB%E5%9E%8B%E8%BD%AC%E5%8C%96"><span class="nav-number">1.3.1.2.</span> <span class="nav-text">通用类型转化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%8D%E6%93%8D%E4%BD%9C%E7%AC%A6%EF%BC%88%E8%BF%99%E4%B8%AA%E6%84%9F%E8%A7%89%E7%94%A8%E7%9A%84%E5%B0%91"><span class="nav-number">1.3.1.3.</span> <span class="nav-text">位操作符（这个感觉用的少</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%EF%BC%8C%E5%B8%83%E5%B0%94%EF%BC%8C%E5%AD%97%E7%AC%A6%EF%BC%8C%E6%95%B0%E7%BB%84"><span class="nav-number">1.3.1.4.</span> <span class="nav-text">字符串，布尔，字符，数组</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8C%85%E3%81%AE%E5%AF%BC%E5%85%A5"><span class="nav-number">1.4.</span> <span class="nav-text">包の导入</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#kotlin%E4%BD%BF%E7%94%A8import-%E6%9D%A5%E5%AF%BC%E5%85%A5%E5%8C%85%EF%BC%8C%E5%AF%BC%E5%85%A5%E6%96%B9%E5%BC%8F%E4%B8%8Epython%E7%9B%B8%E4%BC%BC"><span class="nav-number">1.4.0.0.1.</span> <span class="nav-text">kotlin使用import 来导入包，导入方式与python相似</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8E%A7%E5%88%B6%E6%B5%81"><span class="nav-number">1.5.</span> <span class="nav-text">控制流</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#if-%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="nav-number">1.5.1.</span> <span class="nav-text">if 表达式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#when%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="nav-number">1.5.2.</span> <span class="nav-text">when表达式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#for%E5%BE%AA%E7%8E%AF"><span class="nav-number">1.5.3.</span> <span class="nav-text">for循环</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#while%E5%BE%AA%E7%8E%AF"><span class="nav-number">1.5.4.</span> <span class="nav-text">while循环</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%94%E5%9B%9E%E4%B8%8E%E8%B7%B3%E8%BD%AC"><span class="nav-number">1.5.5.</span> <span class="nav-text">返回与跳转</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BB%93%E6%9E%84%E5%8C%96%E8%B7%B3%E8%BD%AC%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%8F%8A%E6%A0%87%E7%AD%BE"><span class="nav-number">1.5.5.1.</span> <span class="nav-text">结构化跳转表达式及标签</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A0%87%E7%AD%BE%E7%9A%84%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C"><span class="nav-number">1.5.5.2.</span> <span class="nav-text">标签的常用操作</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B1%BB"><span class="nav-number">1.6.</span> <span class="nav-text">类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B1%BB%E7%9A%84%E5%9F%BA%E6%9C%AC"><span class="nav-number">1.6.1.</span> <span class="nav-text">类的基本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%A7%E6%89%BF"><span class="nav-number">1.6.2.</span> <span class="nav-text">继承</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BC%B4%E7%94%9F%E5%AF%B9%E8%B1%A1companion-object"><span class="nav-number">1.6.3.</span> <span class="nav-text">伴生对象companion object</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Kotlin%E4%B8%AD%E7%9A%84%E5%90%84%E7%A7%8D%E7%B1%BB"><span class="nav-number">1.6.4.</span> <span class="nav-text">Kotlin中的各种类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8A%BD%E8%B1%A1%E7%B1%BB"><span class="nav-number">1.6.4.1.</span> <span class="nav-text">抽象类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E7%B1%BB"><span class="nav-number">1.6.4.2.</span> <span class="nav-text">数据类</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E7%B1%BB%E8%87%AA%E5%B8%A6%E8%A7%A3%E6%9E%84%E6%96%B9%E6%B3%95%E2%80%94%E2%80%94componentN"><span class="nav-number">1.6.4.2.1.</span> <span class="nav-text">数据类自带解构方法——componentN()</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E7%B1%BB%E7%9A%84copy%E5%87%BD%E6%95%B0"><span class="nav-number">1.6.4.2.2.</span> <span class="nav-text">数据类的copy函数</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8D%95%E4%BE%8B%E7%B1%BB"><span class="nav-number">1.6.4.3.</span> <span class="nav-text">单例类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9E%9A%E4%B8%BE%E7%B1%BB"><span class="nav-number">1.6.4.4.</span> <span class="nav-text">枚举类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AF%86%E5%B0%81%E7%B1%BB"><span class="nav-number">1.6.4.5.</span> <span class="nav-text">密封类</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A7%94%E6%89%98"><span class="nav-number">1.6.5.</span> <span class="nav-text">委托</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B1%9E%E6%80%A7%E5%A7%94%E6%89%98"><span class="nav-number">1.6.5.1.</span> <span class="nav-text">属性委托</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%B1%BB%E5%A7%94%E6%89%98"><span class="nav-number">1.6.5.2.</span> <span class="nav-text">类委托</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B3%9B%E5%9E%8B"><span class="nav-number">1.7.</span> <span class="nav-text">泛型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B3%9B%E5%9E%8B%EF%BC%8C%E5%8D%B3-%E2%80%9C%E5%8F%82%E6%95%B0%E5%8C%96%E7%B1%BB%E5%9E%8B%E2%80%9D%EF%BC%8C%E5%B0%86%E7%B1%BB%E5%9E%8B%E5%8F%82%E6%95%B0%E5%8C%96%EF%BC%8C%E5%8F%AF%E4%BB%A5%E7%94%A8%E5%9C%A8%E7%B1%BB%EF%BC%8C%E6%8E%A5%E5%8F%A3%EF%BC%8C%E6%96%B9%E6%B3%95%E4%B8%8A%E3%80%82"><span class="nav-number">1.7.1.</span> <span class="nav-text">泛型，即 “参数化类型”，将类型参数化，可以用在类，接口，方法上。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B3%9B%E5%9E%8B%E7%BA%A6%E6%9D%9F%EF%BC%9A"><span class="nav-number">1.7.2.</span> <span class="nav-text">泛型约束：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9E%8B%E5%8F%98"><span class="nav-number">1.7.3.</span> <span class="nav-text">型变</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A3%B0%E6%98%8E%E5%A4%84%E5%9E%8B%E5%8F%98"><span class="nav-number">1.7.3.1.</span> <span class="nav-text">声明处型变</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%98%9F%E5%8F%B7%E6%8A%95%E5%B0%84"><span class="nav-number">1.7.4.</span> <span class="nav-text">星号投射</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%87%BD%E6%95%B0"><span class="nav-number">1.8.</span> <span class="nav-text">函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%87%BD%E6%95%B0%E7%9A%84%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C"><span class="nav-number">1.8.1.</span> <span class="nav-text">函数的基础操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Kotlin%E4%B8%AD%E4%B8%8D%E5%90%8C%E7%9A%84%E5%87%BD%E6%95%B0"><span class="nav-number">1.8.2.</span> <span class="nav-text">Kotlin中不同的函数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8suspend%E6%A0%87%E8%AE%B0%E7%9A%84%E5%8D%8F%E7%A8%8B%E6%8C%82%E8%B5%B7%E5%87%BD%E6%95%B0%EF%BC%9A%E5%8D%8F%E7%A8%8B%E9%83%A8%E5%88%86%E8%AE%B2"><span class="nav-number">1.8.2.1.</span> <span class="nav-text">使用suspend标记的协程挂起函数：协程部分讲</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8infix%E6%A0%87%E8%AE%B0%E7%9A%84%E4%B8%AD%E7%BC%80%E8%A1%A8%E7%A4%BA%E6%B3%95%EF%BC%88%E5%BF%BD%E7%95%A5%E8%AF%A5%E8%B0%83%E7%94%A8%E7%9A%84%E7%82%B9%E4%B8%8E%E5%9C%86%E6%8B%AC%E5%8F%B7%EF%BC%89%EF%BC%9A"><span class="nav-number">1.8.2.2.</span> <span class="nav-text">使用infix标记的中缀表示法（忽略该调用的点与圆括号）：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8tailrec%E6%A0%87%E8%AE%B0%E7%9A%84%E5%B0%BE%E9%80%92%E5%BD%92%E5%87%BD%E6%95%B0%EF%BC%9A"><span class="nav-number">1.8.2.3.</span> <span class="nav-text">使用tailrec标记的尾递归函数：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B3%9B%E5%9E%8B%E5%87%BD%E6%95%B0%EF%BC%9A"><span class="nav-number">1.8.2.4.</span> <span class="nav-text">泛型函数：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8D%95%E8%A1%A8%E8%BE%BE%E5%87%BD%E6%95%B0%EF%BC%9A"><span class="nav-number">1.8.2.5.</span> <span class="nav-text">单表达函数：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%AF%E5%8F%98%E6%95%B0%E9%87%8F%E7%9A%84%E5%8F%82%E6%95%B0%EF%BC%88Varargs%EF%BC%89"><span class="nav-number">1.8.2.6.</span> <span class="nav-text">可变数量的参数（Varargs）:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B1%80%E9%83%A8%E5%87%BD%E6%95%B0%EF%BC%9A"><span class="nav-number">1.8.2.7.</span> <span class="nav-text">局部函数：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%88%90%E5%91%98%E5%87%BD%E6%95%B0%EF%BC%9A"><span class="nav-number">1.8.2.8.</span> <span class="nav-text">成员函数：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%86%85%E8%81%94%E5%87%BD%E6%95%B0%EF%BC%9A"><span class="nav-number">1.8.2.9.</span> <span class="nav-text">内联函数：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%AB%98%E9%98%B6%E5%87%BD%E6%95%B0%EF%BC%9A"><span class="nav-number">1.8.2.10.</span> <span class="nav-text">高阶函数：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8C%BF%E5%90%8D%E5%87%BD%E6%95%B0%EF%BC%9A"><span class="nav-number">1.8.2.11.</span> <span class="nav-text">匿名函数：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%87%BD%E6%95%B0%EF%BC%9A"><span class="nav-number">1.8.2.12.</span> <span class="nav-text">作用域函数：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%89%A9%E5%B1%95%E5%87%BD%E6%95%B0%EF%BC%9A"><span class="nav-number">1.8.2.13.</span> <span class="nav-text">扩展函数：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%8F%8A%E5%87%BD%E6%95%B0%E5%BC%8F%E6%8E%A5%E5%8F%A3"><span class="nav-number">1.8.3.</span> <span class="nav-text">lambda表达式及函数式接口</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%87%BD%E6%95%B0%E5%BC%8F%EF%BC%88SAM%EF%BC%89%E6%8E%A5%E5%8F%A3"><span class="nav-number">1.8.3.1.</span> <span class="nav-text">函数式（SAM）接口</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SAM%E8%BD%AC%E5%8C%96"><span class="nav-number">1.8.3.2.</span> <span class="nav-text">SAM转化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="nav-number">1.8.3.3.</span> <span class="nav-text">Lambda表达式</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Kotlin%E7%9A%84%E7%A9%BA%E5%AE%89%E5%85%A8"><span class="nav-number">1.9.</span> <span class="nav-text">Kotlin的空安全</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.9.1.</span> <span class="nav-text">?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#-1"><span class="nav-number">1.9.2.</span> <span class="nav-text">?.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#-2"><span class="nav-number">1.9.3.</span> <span class="nav-text">!!</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#-3"><span class="nav-number">1.9.4.</span> <span class="nav-text">?:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#as"><span class="nav-number">1.9.5.</span> <span class="nav-text">as?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#let"><span class="nav-number">1.9.6.</span> <span class="nav-text">?.let{}</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8D%E6%98%AF%E7%BB%9D%E5%AF%B9%E7%9A%84%E7%A9%BA%E6%8C%87%E9%92%88%E5%AE%89%E5%85%A8"><span class="nav-number">1.9.7.</span> <span class="nav-text">不是绝对的空指针安全</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9B%86%E5%90%88%E5%92%8C%E6%95%B0%E7%BB%84"><span class="nav-number">1.10.</span> <span class="nav-text">集合和数组</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E7%BB%84%EF%BC%9A"><span class="nav-number">1.10.1.</span> <span class="nav-text">数组：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9B%86%E5%90%88%EF%BC%9A"><span class="nav-number">1.10.2.</span> <span class="nav-text">集合：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Set%EF%BC%9A"><span class="nav-number">1.10.2.1.</span> <span class="nav-text">Set：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Map"><span class="nav-number">1.10.2.2.</span> <span class="nav-text">Map:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#list"><span class="nav-number">1.10.2.3.</span> <span class="nav-text">list:</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%8F%E7%A8%8B%E4%B8%8Eflow"><span class="nav-number">1.11.</span> <span class="nav-text">协程与flow</span></a></li></ol></li></ol></div>
-        </div>
-        <!--/noindex-->
-
-        <div class="site-overview-wrap sidebar-panel">
-          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
-  <p class="site-author-name" itemprop="name">HuangRui</p>
-  <div class="site-description" itemprop="description"></div>
-</div>
-<div class="site-state-wrap site-overview-item animated">
-  <nav class="site-state">
-      <div class="site-state-item site-state-posts">
-        <a href="/archives/">
-          <span class="site-state-item-count">15</span>
-          <span class="site-state-item-name">日志</span>
-        </a>
-      </div>
-      <div class="site-state-item site-state-categories">
-        <span class="site-state-item-count">8</span>
-        <span class="site-state-item-name">分类</span>
-      </div>
-      <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">12</span>
-        <span class="site-state-item-name">标签</span>
-      </div>
-  </nav>
-</div>
-
-
-
-        </div>
-      </div>
-    </div>
-  </aside>
-  <div class="sidebar-dimmer"></div>
-
-
-    </header>
-
     
-  <div class="back-to-top" role="button" aria-label="返回顶部">
-    <i class="fa fa-arrow-up"></i>
-    <span>0%</span>
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"clannad603.github.io","root":"/","version":"1.8.12","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname"}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Hr&#39;blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
   </div>
+</nav>
 
-<noscript>
-  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
-</noscript>
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/article.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="kotlin">
+              
+            </span>
 
-
-    <div class="main-inner post posts-expand">
-
-
+            
+              <div class="mt-3">
   
-
-
-<div class="post-block">
   
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://clannad603.github.io/2021/10/03/kotlin/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="HuangRui">
-      <meta itemprop="description" content="">
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-10-03 13:44" pubdate>
+        2021年10月3日 下午
+      </time>
     </span>
+  
+</div>
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="普通重邮学生的blog">
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      undefined 字
     </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          kotlin
-        </h1>
+  
 
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      NaN 分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
       </span>
-      <span class="post-meta-item-text">发表于</span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
       
 
-      <time title="创建时间：2021-10-03 13:44:58 / 修改时间：13:49:42" itemprop="dateCreated datePublished" datetime="2021-10-03T13:44:58+08:00">2021-10-03</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/kotlin/" itemprop="url" rel="index"><span itemprop="name">kotlin</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>18k</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>16 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-        <h1 id="Kotlin"><a href="#Kotlin" class="headerlink" title="Kotlin"></a>Kotlin</h1><h2 id="kotlin是什么？"><a href="#kotlin是什么？" class="headerlink" title="kotlin是什么？"></a>kotlin是什么？</h2><p>Kotlin 是一种在 Java 虚拟机上运行的静态类型编程语言，被称之为 Android 世界的Swift（确实长的很像），由 JetBrains 设计开发并开源。</p>
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">kotlin</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2021年10月3日 下午
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h1 id="Kotlin"><a href="#Kotlin" class="headerlink" title="Kotlin"></a>Kotlin</h1><h2 id="kotlin是什么？"><a href="#kotlin是什么？" class="headerlink" title="kotlin是什么？"></a>kotlin是什么？</h2><p>Kotlin 是一种在 Java 虚拟机上运行的静态类型编程语言，被称之为 Android 世界的Swift（确实长的很像），由 JetBrains 设计开发并开源。</p>
 <p>Kotlin 可以编译成Java字节码，也可以编译成 JavaScript，方便在没有 JVM 的设备上运行。</p>
 <p>在Google I/O 2017中，Google 宣布 Kotlin 成为 Android 官方开发语言。</p>
 <h2 id="Kotlin好处都有啥？"><a href="#Kotlin好处都有啥？" class="headerlink" title="Kotlin好处都有啥？"></a>Kotlin好处都有啥？</h2><p>作为现代语言，kotlin具有高效的特点，具有严格的“防空思想”，也是一门能让人甜到齁的语言，有接管java的意图，借助安卓走向全平台，spring走向后端，ksl用来操作gradle,基于jvm也使它具有很好的跨平台性，并且拥有很多其他语言的优越地方，比如协程等</p>
@@ -796,82 +816,207 @@
 
 <p>增删查改更多<a target="_blank" rel="noopener" href="http://www.kotlincn.net/docs/reference/collections-overview.html">参考官方文档</a></p>
 <h2 id="协程与flow"><a href="#协程与flow" class="headerlink" title="协程与flow"></a>协程与flow</h2>
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/kotlin/">kotlin</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/kotlin%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80/">kotlin语言基础</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/10/03/jvm/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">jvm</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/10/03/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%85%A5%E9%97%A8%E3%80%8A2%E3%80%8B%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/">
+                        <span class="hidden-mobile">深度学习入门《2》神经网络</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="gitalk-container"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#gitalk-container', function() {
+      Fluid.utils.createCssLink('/css/gitalk.css')
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', function() {
+        var options = Object.assign(
+          {"clientID":"e086c91aae8335308d3b","clientSecret":"83104ef0c9423fc74a3350da23fa29464dc09f20","repo":"clannad603.github.io","owner":"clannad603","adminUser":"['clannad603']","language":"zh-CN","perPage":10,"pagerDirection":"last","distractionFreeMode":false,"createIssueManually":true,"proxy":"https://netnr-proxy.cloudno.de/https://github.com/login/oauth/access_token"},
+          {
+            id: 'ad946c49019d961c331f368276f7aac3'
+          }
+        )
+        var gitalk = new Gitalk(options);
+        gitalk.render('gitalk-container');
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
     </div>
-
     
-    
-    
-
-    <footer class="post-footer">
-          <div class="post-tags">
-              <a href="/tags/kotlin%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80/" rel="tag"># kotlin语言基础</a>
-          </div>
-
-        
-
-          <div class="post-nav">
-            <div class="post-nav-item">
-                <a href="/2021/10/03/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%85%A5%E9%97%A8%E3%80%8A2%E3%80%8B%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/" rel="prev" title="深度学习入门《2》神经网络">
-                  <i class="fa fa-chevron-left"></i> 深度学习入门《2》神经网络
-                </a>
-            </div>
-            <div class="post-nav-item">
-                <a href="/2021/10/03/jvm/" rel="next" title="jvm">
-                  jvm <i class="fa fa-chevron-right"></i>
-                </a>
-            </div>
-          </div>
-    </footer>
-  </article>
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
 </div>
 
-
-
-
-
-
+      </div>
+    
+  </div>
 </div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
   </main>
 
-  <footer class="footer">
-    <div class="footer-inner">
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
 
-
-<div class="copyright">
-  &copy; 
-  <span itemprop="copyrightYear">2021</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">HuangRui</span>
-</div>
-<div class="wordcount">
-  <span class="post-meta-item">
-    <span class="post-meta-item-icon">
-      <i class="fa fa-chart-line"></i>
-    </span>
-    <span title="站点总字数">61k</span>
-  </span>
-  <span class="post-meta-item">
-    <span class="post-meta-item-icon">
-      <i class="fa fa-coffee"></i>
-    </span>
-    <span title="站点阅读时长">56 分钟</span>
-  </span>
-</div>
-  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
   </div>
 
-    </div>
-  </footer>
-
-  
-  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
-<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
 
   
 
+  
+</footer>
 
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
 
 
 
@@ -879,6 +1024,66 @@
 
 
 
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
 
 
 </body>
