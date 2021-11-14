@@ -1,22 +1,26 @@
-
-
 <!DOCTYPE html>
-<html lang="zh-CN" data-default-color-scheme=auto>
-
-
-
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
-  <link rel="icon" href="/img/favicon.png">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  
-  <meta name="theme-color" content="#2f4154">
-  <meta name="description" content="">
-  <meta name="author" content="HuangRui">
-  <meta name="keywords" content="">
-  <meta name="description" content="浅入理解Java虚拟机(雾什么是JVM？JVM 全称为Java Virtual  Machine ,JAVA程序的运行环境（JAVA二进制字节码的运行环境） JVM带来的好处 一次编写，到处运行(“Write once, run anywhere”)  自动内存管理  数组下标越界检查   常见的JVM  现在应该大多数的hotspot JVM JRE JDK的区别  Java代码是如何被执行的">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"clannad603.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="浅入理解Java虚拟机(雾什么是JVM？JVM 全称为Java Virtual  Machine ,JAVA程序的运行环境（JAVA二进制字节码的运行环境） JVM带来的好处 一次编写，到处运行(“Write once, run anywhere”)  自动内存管理  数组下标越界检查   常见的JVM  现在应该大多数的hotspot JVM JRE JDK的区别  Java代码是如何被执行的">
 <meta property="og:type" content="article">
 <meta property="og:title" content="jvm">
 <meta property="og:url" content="https://clannad603.github.io/2021/10/03/jvm/index.html">
@@ -62,232 +66,214 @@
 <meta property="article:modified_time" content="2021-10-04T11:27:45.860Z">
 <meta property="article:author" content="HuangRui">
 <meta property="article:tag" content="jvm基础">
-<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://clannad603.github.io/2021/10/03/jvm/20200914100723848.png">
-  
-  <title>jvm - 普通重邮学生的blog</title>
-
-  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
 
 
-  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
-  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+<link rel="canonical" href="https://clannad603.github.io/2021/10/03/jvm/">
 
-  
-    
-    
-      
-      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
-    
-  
 
-  
-    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://clannad603.github.io/2021/10/03/jvm/","path":"2021/10/03/jvm/","title":"jvm"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>jvm | 普通重邮学生的blog</title>
   
 
 
-<!-- 主题依赖的图标库，不要自行修改 -->
-
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
 
 
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
 
-
-<link  rel="stylesheet" href="/css/main.css" />
-
-<!-- 自定义样式保持在最底部 -->
-
-
-  <script id="fluid-configs">
-    var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"clannad603.github.io","root":"/","version":"1.8.12","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname"}},"search_path":"/local-search.xml"};
-  </script>
-  <script  src="/js/utils.js" ></script>
-  <script  src="/js/color-schema.js" ></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
-
-
-<body>
-  <header style="height: 70vh;">
-    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
-  <div class="container">
-    <a class="navbar-brand" href="/">
-      <strong>Hr&#39;blog</strong>
-    </a>
-
-    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
-            data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <div class="animated-icon"><span></span><span></span><span></span></div>
-    </button>
-
-    <!-- Collapsible content -->
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ml-auto text-center">
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/">
-                <i class="iconfont icon-home-fill"></i>
-                首页
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/archives/">
-                <i class="iconfont icon-archive-fill"></i>
-                归档
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/categories/">
-                <i class="iconfont icon-category-fill"></i>
-                分类
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/tags/">
-                <i class="iconfont icon-tags-fill"></i>
-                标签
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/about/">
-                <i class="iconfont icon-user-fill"></i>
-                关于
-              </a>
-            </li>
-          
-        
-        
-          <li class="nav-item" id="search-btn">
-            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
-              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
-            </a>
-          </li>
-        
-        
-          <li class="nav-item" id="color-toggle-btn">
-            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
-                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
-          </li>
-        
-      </ul>
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
     </div>
   </div>
-</nav>
 
-    <div class="banner" id="banner" parallax=true
-         style="background: url('/img/article.png') no-repeat center center;
-           background-size: cover;">
-      <div class="full-bg-img">
-        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-          <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="jvm">
-              
-            </span>
+  <div class="site-meta">
 
-            
-              <div class="mt-3">
-  
-  
-    <span class="post-meta">
-      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-10-03 13:50" pubdate>
-        2021年10月3日 下午
-      </time>
-    </span>
-  
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">普通重邮学生的blog</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
 </div>
 
-<div class="mt-1">
-  
-    <span class="post-meta mr-2">
-      <i class="iconfont icon-chart"></i>
-      13k 字
-    </span>
-  
 
-  
-    <span class="post-meta mr-2">
-      <i class="iconfont icon-clock-fill"></i>
-      
-      
-      41 分钟
-    </span>
-  
 
+
+
+
+
+</div>
+        
   
-  
-    
-      <!-- 不蒜子统计文章PV -->
-      <span id="busuanzi_container_page_pv" style="display: none">
-        <i class="iconfont icon-eye" aria-hidden="true"></i>
-        <span id="busuanzi_value_page_pv"></span> 次
-      </span>
-    
-  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B5%85%E5%85%A5%E7%90%86%E8%A7%A3Java%E8%99%9A%E6%8B%9F%E6%9C%BA-%E9%9B%BE"><span class="nav-number">1.</span> <span class="nav-text">浅入理解Java虚拟机(雾</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFJVM%EF%BC%9F"><span class="nav-number">1.1.</span> <span class="nav-text">什么是JVM？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JVM%E5%B8%A6%E6%9D%A5%E7%9A%84%E5%A5%BD%E5%A4%84"><span class="nav-number">1.2.</span> <span class="nav-text">JVM带来的好处</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E7%9A%84JVM"><span class="nav-number">1.3.</span> <span class="nav-text">常见的JVM</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JVM-JRE-JDK%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">1.4.</span> <span class="nav-text">JVM JRE JDK的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java%E4%BB%A3%E7%A0%81%E6%98%AF%E5%A6%82%E4%BD%95%E8%A2%AB%E6%89%A7%E8%A1%8C%E7%9A%84"><span class="nav-number">1.5.</span> <span class="nav-text">Java代码是如何被执行的</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JVM-%E7%9A%84%E7%BB%93%E6%9E%84"><span class="nav-number">1.6.</span> <span class="nav-text">JVM 的结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A8%8B%E5%BA%8F%E8%AE%A1%E6%95%B0%E5%99%A8%EF%BC%9A"><span class="nav-number">1.6.1.</span> <span class="nav-text">程序计数器：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%9C%E7%94%A8%EF%BC%9A"><span class="nav-number">1.6.1.1.</span> <span class="nav-text">作用：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%89%B9%E7%82%B9%EF%BC%9A"><span class="nav-number">1.6.1.2.</span> <span class="nav-text">特点：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%A0%88"><span class="nav-number">1.6.2.</span> <span class="nav-text">虚拟机栈</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%A0%88%E9%97%AE%E9%A2%98"><span class="nav-number">1.6.2.1.</span> <span class="nav-text">常见虚拟机栈问题</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%AC%E5%9C%B0%E6%96%B9%E6%B3%95%E6%A0%88"><span class="nav-number">1.6.3.</span> <span class="nav-text">本地方法栈</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A0%86"><span class="nav-number">1.6.4.</span> <span class="nav-text">堆</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B9%B6%E5%8F%91-concurrency-%EF%BC%9A"><span class="nav-number">1.6.4.1.</span> <span class="nav-text">并发(concurrency)：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B9%B6%E8%A1%8C-parallel-%EF%BC%9A"><span class="nav-number">1.6.4.2.</span> <span class="nav-text">并行(parallel)：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%87%BA%E7%8E%B0%E5%9C%A8%E5%A0%86%E7%9A%84%E5%B8%B8%E8%A7%81%E5%BC%82%E5%B8%B8%EF%BC%9A"><span class="nav-number">1.6.4.3.</span> <span class="nav-text">出现在堆的常见异常：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A0%86%E5%86%85%E5%AD%98%E8%AF%8A%E6%96%AD%E5%B7%A5%E5%85%B7"><span class="nav-number">1.6.4.4.</span> <span class="nav-text">堆内存诊断工具:</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#jps"><span class="nav-number">1.6.4.4.1.</span> <span class="nav-text">jps</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#jmap"><span class="nav-number">1.6.4.4.2.</span> <span class="nav-text">jmap</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#jconsole"><span class="nav-number">1.6.4.4.3.</span> <span class="nav-text">jconsole</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#jvirsalvm"><span class="nav-number">1.6.4.4.4.</span> <span class="nav-text">jvirsalvm</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A0%86%E7%9A%84%E4%B8%80%E4%BA%9B%E5%8F%82%E6%95%B0%E9%85%8D%E7%BD%AE"><span class="nav-number">1.6.4.5.</span> <span class="nav-text">堆的一些参数配置</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E5%8C%BA"><span class="nav-number">1.6.5.</span> <span class="nav-text">方法区</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#metaspace%E7%9A%84%E7%BB%84%E6%88%90"><span class="nav-number">1.6.5.1.</span> <span class="nav-text">metaspace的组成</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%8A%A5%E9%94%99"><span class="nav-number">1.6.5.1.1.</span> <span class="nav-text">报错</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6-amp-amp-%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%9F%BA%E7%A1%80"><span class="nav-number">1.7.</span> <span class="nav-text">垃圾回收&amp;&amp;性能优化基础</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1%E3%80%81%E5%A6%82%E4%BD%95%E5%88%A4%E6%96%AD%E5%AF%B9%E8%B1%A1%E5%8F%AF%E4%BB%A5%E5%9B%9E%E6%94%B6"><span class="nav-number">1.7.1.</span> <span class="nav-text">1、如何判断对象可以回收</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BC%95%E7%94%A8%E8%AE%A1%E6%95%B0%E6%B3%95"><span class="nav-number">1.7.1.1.</span> <span class="nav-text">引用计数法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%AF%E8%BE%BE%E6%80%A7%E5%88%86%E6%9E%90%E7%AE%97%E6%B3%95"><span class="nav-number">1.7.1.2.</span> <span class="nav-text">可达性分析算法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E4%BA%94%E7%A7%8D%E5%BC%95%E7%94%A8"><span class="nav-number">1.7.2.</span> <span class="nav-text">2.五种引用</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%BC%BA%E5%BC%95%E7%94%A8"><span class="nav-number">1.7.2.0.1.</span> <span class="nav-text">强引用</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%BD%AF%E5%BC%95%E7%94%A8"><span class="nav-number">1.7.2.0.2.</span> <span class="nav-text">软引用</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%BC%B1%E5%BC%95%E7%94%A8"><span class="nav-number">1.7.2.0.3.</span> <span class="nav-text">弱引用</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%99%9A%E5%BC%95%E7%94%A8"><span class="nav-number">1.7.2.0.4.</span> <span class="nav-text">虚引用</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%BB%88%E7%BB%93%E5%99%A8%E5%BC%95%E7%94%A8"><span class="nav-number">1.7.2.0.5.</span> <span class="nav-text">终结器引用</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%BC%95%E7%94%A8%E9%98%9F%E5%88%97"><span class="nav-number">1.7.2.0.6.</span> <span class="nav-text">引用队列</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E7%AE%97%E6%B3%95"><span class="nav-number">1.7.3.</span> <span class="nav-text">3.垃圾回收算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E5%88%86%E4%BB%A3%E5%9B%9E%E6%94%B6"><span class="nav-number">1.7.4.</span> <span class="nav-text">4.分代回收</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9C%89%E5%85%B3%E6%96%B0%E7%94%9F%E4%BB%A3%E7%9A%84JVM%E5%8F%82%E6%95%B0"><span class="nav-number">1.7.4.1.</span> <span class="nav-text">有关新生代的JVM参数</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%99%A8"><span class="nav-number">1.7.5.</span> <span class="nav-text">垃圾回收器</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B1%BB%E5%8A%A0%E8%BD%BD"><span class="nav-number">1.8.</span> <span class="nav-text">类加载</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">HuangRui</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">15</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
 </div>
 
-            
-          </div>
 
-          
+
         </div>
       </div>
     </div>
-  </header>
+  </aside>
+  <div class="sidebar-dimmer"></div>
 
-  <main>
+
+    </header>
+
     
-      
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
 
-<div class="container-fluid nopadding-x">
-  <div class="row nomargin-x">
-    <div class="d-none d-lg-block col-lg-2"></div>
-    <div class="col-lg-8 nopadding-x-md">
-      <div class="container nopadding-x-md" id="board-ctn">
-        <div class="py-5" id="board">
-          <article class="post-content mx-auto">
-            <!-- SEO header -->
-            <h1 style="display: none">jvm</h1>
-            
-              <p class="note note-info">
-                
-                  本文最后更新于：2021年10月4日 晚上
-                
-              </p>
-            
-            <div class="markdown-body">
-              <h1 id="浅入理解Java虚拟机-雾"><a href="#浅入理解Java虚拟机-雾" class="headerlink" title="浅入理解Java虚拟机(雾"></a>浅入理解Java虚拟机(雾</h1><h2 id="什么是JVM？"><a href="#什么是JVM？" class="headerlink" title="什么是JVM？"></a>什么是JVM？</h2><p>JVM 全称为Java Virtual  Machine ,JAVA程序的<strong>运行环境</strong>（JAVA二进制字节码的运行环境）</p>
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://clannad603.github.io/2021/10/03/jvm/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="HuangRui">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="普通重邮学生的blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          jvm
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-10-03 13:50:48" itemprop="dateCreated datePublished" datetime="2021-10-03T13:50:48+08:00">2021-10-03</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-10-04 19:27:45" itemprop="dateModified" datetime="2021-10-04T19:27:45+08:00">2021-10-04</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/jvm/" itemprop="url" rel="index"><span itemprop="name">jvm</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>13k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>12 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="浅入理解Java虚拟机-雾"><a href="#浅入理解Java虚拟机-雾" class="headerlink" title="浅入理解Java虚拟机(雾"></a>浅入理解Java虚拟机(雾</h1><h2 id="什么是JVM？"><a href="#什么是JVM？" class="headerlink" title="什么是JVM？"></a>什么是JVM？</h2><p>JVM 全称为Java Virtual  Machine ,JAVA程序的<strong>运行环境</strong>（JAVA二进制字节码的运行环境）</p>
 <h2 id="JVM带来的好处"><a href="#JVM带来的好处" class="headerlink" title="JVM带来的好处"></a>JVM带来的好处</h2><ul>
 <li><p>一次编写，到处运行(“Write once, run anywhere”)</p>
 </li>
@@ -296,21 +282,21 @@
 <li><p>数组下标越界检查</p>
 </li>
 </ul>
-<h2 id="常见的JVM"><a href="#常见的JVM" class="headerlink" title="常见的JVM"></a>常见的JVM</h2><img src="/2021/10/03/jvm/20200914100723848.png" srcset="/img/loading.gif" lazyload style="zoom:50%;">
+<h2 id="常见的JVM"><a href="#常见的JVM" class="headerlink" title="常见的JVM"></a>常见的JVM</h2><img src="/2021/10/03/jvm/20200914100723848.png" style="zoom:50%;">
 
 <p>现在应该大多数的hotspot</p>
-<h2 id="JVM-JRE-JDK的区别"><a href="#JVM-JRE-JDK的区别" class="headerlink" title="JVM JRE JDK的区别"></a>JVM JRE JDK的区别</h2><img src="/2021/10/03/jvm/525d84b7d526290a7c88900636ed1033.png" srcset="/img/loading.gif" lazyload style="zoom:50%;">
+<h2 id="JVM-JRE-JDK的区别"><a href="#JVM-JRE-JDK的区别" class="headerlink" title="JVM JRE JDK的区别"></a>JVM JRE JDK的区别</h2><img src="/2021/10/03/jvm/525d84b7d526290a7c88900636ed1033.png" style="zoom:50%;">
 
-<h2 id="Java代码是如何被执行的"><a href="#Java代码是如何被执行的" class="headerlink" title="Java代码是如何被执行的"></a>Java代码是如何被执行的</h2><p><img src="/2021/10/03/jvm/image-20210806170716879.png" srcset="/img/loading.gif" lazyload alt="image-20210806170716879"></p>
+<h2 id="Java代码是如何被执行的"><a href="#Java代码是如何被执行的" class="headerlink" title="Java代码是如何被执行的"></a>Java代码是如何被执行的</h2><p><img src="/2021/10/03/jvm/image-20210806170716879.png" alt="image-20210806170716879"></p>
 <p><strong>一 编写java源程序</strong></p>
 <p><strong>二、当java源程序编码结束后，就需要编译器编译。</strong></p>
 <p>快进到javac编译为class</p>
 <p>快进到看字节流</p>
-<p><img src="/2021/10/03/jvm/image-20210805083235867.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2021/10/03/jvm/image-20210805083235867.png"></p>
 <p>如果这里用cat直接看是乱码，但是在idea里面看的话，他会进行一些编写，然后成这样</p>
-<p><img src="/2021/10/03/jvm/image-20210805083418893.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2021/10/03/jvm/image-20210805083418893.png"></p>
 <p><code>cafe babe</code> 被称为“魔数”，是 JVM 识别 .class 文件的标志。文件格式的定制者可以自由选择魔数值（只要没用过），比如说 .png 文件的魔数是 <code>8950 4e47</code>。</p>
-<h2 id="JVM-的结构"><a href="#JVM-的结构" class="headerlink" title="JVM 的结构"></a>JVM 的结构</h2><img src="/2021/10/03/jvm/8d1de13006ae9e0dd40d5e1db98a81c81603447597022.png" srcset="/img/loading.gif" lazyload style="zoom: 50%;">
+<h2 id="JVM-的结构"><a href="#JVM-的结构" class="headerlink" title="JVM 的结构"></a>JVM 的结构</h2><img src="/2021/10/03/jvm/8d1de13006ae9e0dd40d5e1db98a81c81603447597022.png" style="zoom: 50%;">
 
 <p>由此图可以得知：</p>
 <p>JVM的结构分为以下内容：类加载器（ClassLoader）、执行引擎、内存区（运行时数据区）、本地方法接口。</p>
@@ -326,7 +312,7 @@
 </ul>
 <p>①执行java方法，计数器记录虚拟机字节码指令的地址；②执行<strong>native方法，计数器为空（undefined）</strong></p>
 <p>因为native方法是java通过JNI直接调用本地C/C++库，可以近似的认为native方法相当于C/C++暴露给java的一个接口，java通过调用这个接口从而调用到C/C++方法。由于该方法是通过C/C++而不是java进行实现。那么自然无法产生相应的字节码，并且C/C++执行时的内存分配是由自己语言决定的，而不是由JVM决定的。</p>
-<img src="https://images2018.cnblogs.com/blog/1266638/201807/1266638-20180710225811662-425101318.png" srcset="/img/loading.gif" lazyload alt="img" style="zoom:67%;">
+<img src="https://images2018.cnblogs.com/blog/1266638/201807/1266638-20180710225811662-425101318.png" alt="img" style="zoom:67%;">
 
 <ul>
 <li><strong>占用内存小，唯一不会OutOfMemoryError的区域</strong></li>
@@ -342,7 +328,7 @@
 <li>每个线程只能有<strong>一个活动栈帧</strong>，对应着<strong>当前正在执行的方法</strong></li>
 </ul>
 <p>典中典之常见虚拟机栈讲解</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TestDemo</span> </span>&#123;<br><br>        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;<br>            method1();<br>        &#125;<br><br>        <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">method1</span><span class="hljs-params">()</span> </span>&#123;<br>            method2(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>);<br>        &#125;<br><br>        <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> <span class="hljs-title">method2</span><span class="hljs-params">(<span class="hljs-keyword">int</span> a, <span class="hljs-keyword">int</span> b)</span> </span>&#123;<br>            <span class="hljs-keyword">int</span> c = a + b;<br>            <span class="hljs-keyword">return</span> c;<br>        &#125;<br>    <br>&#125;<br><br></code></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestDemo</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">            method1();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">method1</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            method2(<span class="number">1</span>, <span class="number">2</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">method2</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">int</span> c = a + b;</span><br><span class="line">            <span class="keyword">return</span> c;</span><br><span class="line">        &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <p>这里我打算进行演示</p>
 <h4 id="常见虚拟机栈问题"><a href="#常见虚拟机栈问题" class="headerlink" title="常见虚拟机栈问题"></a>常见虚拟机栈问题</h4><p>垃圾回收是否涉及栈内存？</p>
@@ -358,10 +344,10 @@
 <p>局部变量、参数 分配在栈上</p>
 <p>此处进入android studio调整vm 参数的地方</p>
 <p>ps:idea64.exe.vmoptions针对的是 IDEA 环境，对通过 IDEA 运行的 <a target="_blank" rel="noopener" href="https://www.jianshu.com/p/3c330074082b">Java 项目</a>不起作用。IDEA 本身就是一个 Java 应用，所以也必须运行于 JVM 之上。此处的idea64.exe.vmoptions文件就是用来配置 64 位的 IDEA 所使用的 JVM 参数。是 IDEA 运行时用的配置，并不是项目运行的配置</p>
-<img src="/2021/10/03/jvm/image-20210802160632576.png" srcset="/img/loading.gif" lazyload style="zoom:67%;">
+<img src="/2021/10/03/jvm/image-20210802160632576.png" style="zoom:67%;">
 
 <p>运行单个项目时可以这样</p>
-<img src="/2021/10/03/jvm/image-20210806161449743.png" srcset="/img/loading.gif" lazyload style="zoom:67%;">
+<img src="/2021/10/03/jvm/image-20210806161449743.png" style="zoom:67%;">
 
 <p>内存溢出:</p>
 <p><strong>Java.lang.stackOverflowError</strong> 栈内存溢出</p>
@@ -375,31 +361,31 @@
 <p>对于Java应用程序来说，Java堆是虚拟机所管理的内存的最大的一块。是被所有线程共享的一块内存区域（因为对象都是在堆里面创建的，而所有的线程都可以拿到对象的引用，所以在多线程并发过程中，对于一些对象，我们得加锁），这里稍微提一下并发和并行（下面几种垃圾回收器得用到）</p>
 <p>通过new关键字<strong>创建的对象</strong>都会被放在堆内存</p>
 <p>堆里面包含了以下内容</p>
-<img src="https://img-blog.csdnimg.cn/20191208160358777.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0NTQzNTA4,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" style="zoom:67%;">
+<img src="https://img-blog.csdnimg.cn/20191208160358777.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0NTQzNTA4,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" style="zoom:67%;">
 
 <p>在垃圾回收哪里讲讲</p>
 <h4 id="并发-concurrency-："><a href="#并发-concurrency-：" class="headerlink" title="并发(concurrency)："></a>并发(concurrency)：</h4><p>指在同一时刻只能有一条指令执行，但多个进程指令被快速的轮换执行，使得在宏观上具有多个进程同时执行的效果，但在微观上并不是同时执行的，只是把时间分成若干段，使多个进程快速交替的执行。</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/7557373-da64ffd6d1effaac.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/295/format/webp" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/7557373-da64ffd6d1effaac.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/295/format/webp" alt="img"></p>
 <p>简单点来说对与cpu处理并发任务就是宏观是并联的，微观是串联的</p>
 <p>涉及时间片那些我就不说了（主要是忘记了</p>
 <h4 id="并行-parallel-："><a href="#并行-parallel-：" class="headerlink" title="并行(parallel)："></a>并行(parallel)：</h4><p>指在同一时刻，有多条指令在多个处理器上同时执行。所以无论从微观还是从宏观来看，二者都是一起执行的。</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/7557373-72912ea8e89c4007.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/313/format/webp" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/7557373-72912ea8e89c4007.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/313/format/webp" alt="img"></p>
 <h4 id="出现在堆的常见异常："><a href="#出现在堆的常见异常：" class="headerlink" title="出现在堆的常见异常："></a>出现在堆的常见异常：</h4><p><strong>java.lang.OutofMemoryError</strong> ：java heap space. 堆内存溢出</p>
-<img src="https://img-blog.csdnimg.cn/20200627192624320.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5OTY1ODAw,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" lazyload alt="img" style="zoom: 67%;">
+<img src="https://img-blog.csdnimg.cn/20200627192624320.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5OTY1ODAw,size_16,color_FFFFFF,t_70" alt="img" style="zoom: 67%;">
 
 <p>典中典之内存不够了</p>
-<img src="/2021/10/03/jvm/image-20210804131002232.png" srcset="/img/loading.gif" lazyload style="zoom:67%;">
+<img src="/2021/10/03/jvm/image-20210804131002232.png" style="zoom:67%;">
 
-<h4 id="堆内存诊断工具"><a href="#堆内存诊断工具" class="headerlink" title="堆内存诊断工具:"></a>堆内存诊断工具:</h4><h5 id="jps"><a href="#jps" class="headerlink" title="jps"></a><strong>jps</strong></h5><p><img src="/2021/10/03/jvm/image-20210804102154659.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="堆内存诊断工具"><a href="#堆内存诊断工具" class="headerlink" title="堆内存诊断工具:"></a>堆内存诊断工具:</h4><h5 id="jps"><a href="#jps" class="headerlink" title="jps"></a><strong>jps</strong></h5><p><img src="/2021/10/03/jvm/image-20210804102154659.png"></p>
 <p>查看jvav运行的进程号</p>
-<img src="/2021/10/03/jvm/image-20210804102300807.png" srcset="/img/loading.gif" lazyload style="zoom:50%;">
+<img src="/2021/10/03/jvm/image-20210804102300807.png" style="zoom:50%;">
 
 <p><strong>-q</strong> 只显示pid，不显示class名称,jar文件名和传递给main方法的参数</p>
 <p><strong>-m</strong> 输出传递给main方法的参数，在嵌入式jvm上可能是null</p>
 <p><strong>-l</strong> 输出应用程序main class的完整package名或者应用程序的jar文件完整路径名</p>
 <p><strong>-v</strong> 输出传递给JVM的参数</p>
 <p><strong>-V</strong> 隐藏输出传递给JVM的参数</p>
-<h5 id="jmap"><a href="#jmap" class="headerlink" title="jmap"></a><strong>jmap</strong></h5><img src="/2021/10/03/jvm/image-20210804103419141.png" srcset="/img/loading.gif" lazyload style="zoom:50%;">
+<h5 id="jmap"><a href="#jmap" class="headerlink" title="jmap"></a><strong>jmap</strong></h5><img src="/2021/10/03/jvm/image-20210804103419141.png" style="zoom:50%;">
 
 <p>   MinHeapFreeRatio     </p>
 <ul>
@@ -434,20 +420,20 @@
 <p>Capacity = Regions * RegionSize 大小</p>
 <p>这里先说一下这个命令遇到的一些坑</p>
 <p>网上很多时候说使用jmap -heap pid来进行查看内存使用情况，但是这个命令对于jdk8之后的版本，不能再使用jmap -heap pid的命令了。<br>使用旧的命令会报错</p>
-<figure class="highlight subunit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs subunit"><span class="hljs-keyword">Error: </span>-heap option used<br>Cannot connect to core dump or remote debug server. Use jhsdb jmap instead<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Error: -heap option used</span><br><span class="line">Cannot connect to core dump or remote debug server. Use jhsdb jmap instead</span><br></pre></td></tr></table></figure>
 
 <p>现场展示一下查看内存的步骤</p>
 <p>jmap用法参考</p>
-<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs routeros">Usage:<br>    jmap [option] &lt;pid&gt;<br>        (<span class="hljs-keyword">to</span> connect <span class="hljs-keyword">to</span> running process)<br>    jmap [option] &lt;executable &lt;core&gt;<br>        (<span class="hljs-keyword">to</span> connect <span class="hljs-keyword">to</span> a core file)<br>    jmap [option] [server_id@]&lt;remote<span class="hljs-built_in"> server IP </span><span class="hljs-keyword">or</span> hostname&gt;<br>        (<span class="hljs-keyword">to</span> connect <span class="hljs-keyword">to</span> remote <span class="hljs-builtin-name">debug</span> server)<br><br>where &lt;option&gt; is one of:<br>    &lt;none&gt;               <span class="hljs-keyword">to</span> <span class="hljs-builtin-name">print</span> same <span class="hljs-builtin-name">info</span> as Solaris pmap<br>    -heap                <span class="hljs-keyword">to</span> <span class="hljs-builtin-name">print</span> java heap summary<br>    -histo[:live]        <span class="hljs-keyword">to</span> <span class="hljs-builtin-name">print</span> histogram of java object heap; <span class="hljs-keyword">if</span> the <span class="hljs-string">&quot;live&quot;</span><br>                         suboption is specified, only count live objects<br>    -permstat            <span class="hljs-keyword">to</span> <span class="hljs-builtin-name">print</span> permanent generation statistics<br>    -finalizerinfo       <span class="hljs-keyword">to</span> <span class="hljs-builtin-name">print</span> information on objects awaiting finalization<br>    -dump:&lt;dump-options&gt; <span class="hljs-keyword">to</span> dump java heap <span class="hljs-keyword">in</span> hprof binary format<br>                         dump-options:<br>                           live         dump only live objects; <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> specified,<br>                                        all objects <span class="hljs-keyword">in</span> the heap are dumped.<br>                           <span class="hljs-attribute">format</span>=b     binary format<br>                           <span class="hljs-attribute">file</span>=&lt;file&gt;  dump heap <span class="hljs-keyword">to</span> &lt;file&gt;<br>                         Example: jmap -dump:live,<span class="hljs-attribute">format</span>=b,file=heap.bin &lt;pid&gt;<br>    -F                   force. Use with -dump:&lt;dump-options&gt; &lt;pid&gt; <span class="hljs-keyword">or</span> -histo<br>                         <span class="hljs-keyword">to</span> force a heap dump <span class="hljs-keyword">or</span> histogram when &lt;pid&gt; does <span class="hljs-keyword">not</span><br>                         respond. The <span class="hljs-string">&quot;live&quot;</span> suboption is <span class="hljs-keyword">not</span> supported<br>                         <span class="hljs-keyword">in</span> this mode.<br>    -h | -help           <span class="hljs-keyword">to</span> <span class="hljs-builtin-name">print</span> this help message<br>    -J&lt;flag&gt;             <span class="hljs-keyword">to</span> pass &lt;flag&gt; directly <span class="hljs-keyword">to</span> the runtime system<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">Usage:</span><br><span class="line">    jmap [option] &lt;pid&gt;</span><br><span class="line">        (to connect to running process)</span><br><span class="line">    jmap [option] &lt;executable &lt;core&gt;</span><br><span class="line">        (to connect to a core file)</span><br><span class="line">    jmap [option] [server_id@]&lt;remote server IP or hostname&gt;</span><br><span class="line">        (to connect to remote debug server)</span><br><span class="line"></span><br><span class="line">where &lt;option&gt; is one of:</span><br><span class="line">    &lt;none&gt;               to print same info as Solaris pmap</span><br><span class="line">    -heap                to print java heap summary</span><br><span class="line">    -histo[:live]        to print histogram of java object heap; if the &quot;live&quot;</span><br><span class="line">                         suboption is specified, only count live objects</span><br><span class="line">    -permstat            to print permanent generation statistics</span><br><span class="line">    -finalizerinfo       to print information on objects awaiting finalization</span><br><span class="line">    -dump:&lt;dump-options&gt; to dump java heap in hprof binary format</span><br><span class="line">                         dump-options:</span><br><span class="line">                           live         dump only live objects; if not specified,</span><br><span class="line">                                        all objects in the heap are dumped.</span><br><span class="line">                           format=b     binary format</span><br><span class="line">                           file=&lt;file&gt;  dump heap to &lt;file&gt;</span><br><span class="line">                         Example: jmap -dump:live,format=b,file=heap.bin &lt;pid&gt;</span><br><span class="line">    -F                   force. Use with -dump:&lt;dump-options&gt; &lt;pid&gt; or -histo</span><br><span class="line">                         to force a heap dump or histogram when &lt;pid&gt; does not</span><br><span class="line">                         respond. The &quot;live&quot; suboption is not supported</span><br><span class="line">                         in this mode.</span><br><span class="line">    -h | -help           to print this help message</span><br><span class="line">    -J&lt;flag&gt;             to pass &lt;flag&gt; directly to the runtime system</span><br></pre></td></tr></table></figure>
 
 <p>此外需要注意一下如果一台设备上有多个jdk需要指定一下具体路径下的jvm工具（当然创建项目时使用环境中的jdk就不用</p>
 <p>（怒 这个导致我查了好久的博客，网上讲这个错误的还比较稀少</p>
 <h5 id="jconsole"><a href="#jconsole" class="headerlink" title="jconsole"></a><strong>jconsole</strong></h5><p>理论上直接使用jconsole就能进入，但是可能会出一些bug</p>
 <p>比如，我遇到的</p>
-<img src="/2021/10/03/jvm/image-20210804114409842.png" srcset="/img/loading.gif" lazyload style="zoom:50%;">
+<img src="/2021/10/03/jvm/image-20210804114409842.png" style="zoom:50%;">
 
 <p>但是有的进程又可以链接，</p>
-<img src="/2021/10/03/jvm/image-20210804114918627.png" srcset="/img/loading.gif" lazyload style="zoom:50%;">
+<img src="/2021/10/03/jvm/image-20210804114918627.png" style="zoom:50%;">
 
 <p>这个还可以进行远程链接</p>
 <p>此处将进行一些常见操作将进行演示</p>
@@ -455,7 +441,7 @@
 <p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/baihuitestsoftware/articles/6405580.html">更多详情</a></p>
 <h4 id="堆的一些参数配置"><a href="#堆的一些参数配置" class="headerlink" title="堆的一些参数配置"></a>堆的一些参数配置</h4><p>-XX:NewRatio:  设置Yong 和 Old的比例，比默认值为2，则Old Generation是 Yong Generation的2倍，即Yong Generation占据内存的1/3<br>-XX:NewSize : 设置Yong Generation的初始值大小<br>-XX:MaxNewSize：设置Yong Generation的最大值大小<br>-XX:SurviorRatio : 设置Eden和一个Suivior的比例，默认值为8，即Eden是To(S2)的比例是8，（From和To是一样大的），此时Eden占据Yong Generation的8/10<br>-XX:InitialTenuringThreshol : 设置晋升到老年代的对象年龄的最小值，默认为7<br>-XX:MaxTenuringThreshold : 设置晋升到老年代的对象年龄的最大值</p>
 <h3 id="方法区"><a href="#方法区" class="headerlink" title="方法区"></a>方法区</h3><p>结构：</p>
-<img src="https://nyimapicture.oss-cn-beijing.aliyuncs.com/img/20200608150547.png" srcset="/img/loading.gif" lazyload alt="img" style="zoom:67%;">
+<img src="https://nyimapicture.oss-cn-beijing.aliyuncs.com/img/20200608150547.png" alt="img" style="zoom:67%;">
 
 <p>由此图可以看见，在jvm 1.6和1.8有很大区别，首先是方法·区由jvm中转移到了本地内存中，StringTable也由常量池中转移到了堆里面，永久代变为了元空间（有一些报错也变了，但是鉴于我们现在使用的都是1.8以后的版本了，所以这里只会提到1.8的版本</p>
 <p>copy一下元空间</p>
@@ -479,12 +465,12 @@
 <p>引用计数算法（Reference Counting）虽然占用了一些额外的内存空间来进行计数，但<br>它的原理简单，判定效率也很高，在大多数情况下它都是一个不错的算法</p>
 <p>单纯的引用计数<br>就很难解决对象之间相互循环引用的问题。</p>
 <p>来自深入理解Jvm虚拟机的例子</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ReferenceCountingGC</span> </span>&#123;<br>    <span class="hljs-keyword">public</span> Object instance = <span class="hljs-keyword">null</span>;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> _1MB = <span class="hljs-number">1024</span> * <span class="hljs-number">1024</span>;<br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 这个成员属性的唯一意义就是占点内存，以便能在GC日志中看清楚是否有回收过</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">byte</span>[] bigSize = <span class="hljs-keyword">new</span> <span class="hljs-keyword">byte</span>[<span class="hljs-number">2</span> * _1MB];<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testGC</span><span class="hljs-params">()</span> </span>&#123;<br>        ReferenceCountingGC objA = <span class="hljs-keyword">new</span> ReferenceCountingGC();<br>        ReferenceCountingGC objB = <span class="hljs-keyword">new</span> ReferenceCountingGC();<br>        objA.instance = objB;<br>        objB.instance = objA;<br>        objA = <span class="hljs-keyword">null</span>;<br>        objB = <span class="hljs-keyword">null</span>;<br><span class="hljs-comment">// 假设在这行发生GC，objA和objB是否能被回收？</span><br>        System.gc();<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;<br>        testGC();<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ReferenceCountingGC</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> Object instance = <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> _1MB = <span class="number">1024</span> * <span class="number">1024</span>;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 这个成员属性的唯一意义就是占点内存，以便能在GC日志中看清楚是否有回收过</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">byte</span>[] bigSize = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">2</span> * _1MB];</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">testGC</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        ReferenceCountingGC objA = <span class="keyword">new</span> ReferenceCountingGC();</span><br><span class="line">        ReferenceCountingGC objB = <span class="keyword">new</span> ReferenceCountingGC();</span><br><span class="line">        objA.instance = objB;</span><br><span class="line">        objB.instance = objA;</span><br><span class="line">        objA = <span class="keyword">null</span>;</span><br><span class="line">        objB = <span class="keyword">null</span>;</span><br><span class="line"><span class="comment">// 假设在这行发生GC，objA和objB是否能被回收？</span></span><br><span class="line">        System.gc();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        testGC();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>先来看看如何设置打印日志</p>
 <p>此处得花一点时间</p>
 <p>看看效果</p>
-<p><img src="/2021/10/03/jvm/image-20210804143908786.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2021/10/03/jvm/image-20210804143908786.png"></p>
 <p>此处的12M-&gt;2M意味着虚拟机并没有因为这两<br>个对象互相引用就放弃回收它们，这也从侧面说明了Java虚拟机并不是通过引用计数算法来判断对象<br>是否存活的。</p>
 <table>
 <thead>
@@ -540,7 +526,7 @@
 </tbody></table>
 <h4 id="可达性分析算法"><a href="#可达性分析算法" class="headerlink" title="可达性分析算法"></a>可达性分析算法</h4><p>come from 深入理解Java虚拟机</p>
 <p>当前主流的商用程序语言（Java、C#，上溯至前面提到的古老的Lisp）的内存管理子系统，都是<br>通过可达性分析（Reachability Analysis）算法来判定对象是否存活的。这个算法的基本思路就是通过<br>一系列称为“GC Roots”的根对象作为起始节点集，从这些节点开始，根据引用关系向下搜索，搜索过<br>程所走过的路径称为“引用链”（Reference Chain），如果某个对象到GC Roots间没有任何引用链相连，<br>或者用图论的话来说就是从GC Roots到这个对象不可达时，则证明此对象是不可能再被使用的。</p>
-<img src="/2021/10/03/jvm/image-20210804144414534.png" srcset="/img/loading.gif" lazyload style="zoom:67%;">
+<img src="/2021/10/03/jvm/image-20210804144414534.png" style="zoom:67%;">
 
 <p><strong>可以作为GC Root的对象</strong></p>
 <ul>
@@ -549,7 +535,7 @@
 <li>方法区中常量引用的对象</li>
 <li>本地方法栈中JNI（即一般说的Native方法）引用的对象</li>
 </ul>
-<h3 id="2-五种引用"><a href="#2-五种引用" class="headerlink" title="2.五种引用"></a>2.五种引用</h3><img src="https://nyimapicture.oss-cn-beijing.aliyuncs.com/img/20200608150800.png" srcset="/img/loading.gif" lazyload alt="img" style="zoom:67%;">
+<h3 id="2-五种引用"><a href="#2-五种引用" class="headerlink" title="2.五种引用"></a>2.五种引用</h3><img src="https://nyimapicture.oss-cn-beijing.aliyuncs.com/img/20200608150800.png" alt="img" style="zoom:67%;">
 
 
 
@@ -589,24 +575,24 @@
 </li>
 </ul>
 <h3 id="3-垃圾回收算法"><a href="#3-垃圾回收算法" class="headerlink" title="3.垃圾回收算法"></a>3.垃圾回收算法</h3><p><strong>标记-清除（Mark-Sweep）</strong><br>GC分为两个阶段，标记和清除。首先标记所有可回收的对象，在标记完成后统一回收所有被标记的对象。同时会产生不连续的内存碎片。碎片过多会导致以后程序运行时需要分配较大对象时，无法找到足够的连续内存，而不得已再次触发GC。</p>
-<img src="https://nyimapicture.oss-cn-beijing.aliyuncs.com/img/20200608150827.png" srcset="/img/loading.gif" lazyload alt="img" style="zoom:67%;">
+<img src="https://nyimapicture.oss-cn-beijing.aliyuncs.com/img/20200608150827.png" alt="img" style="zoom:67%;">
 
 <ul>
-<li><strong>复制（Copy）</strong><br>将内存按容量划分为两块，每次只使用其中一块。当这一块内存用完了，就将存活的对象复制到另一块上，然后再把已使用的内存空间一次清理掉。这样使得每次都是对半个内存区回收，也不用考虑内存碎片问题，简单高效。缺点需要两倍的内存空间。<img src="https://nyimapicture.oss-cn-beijing.aliyuncs.com/img/20200608150842.png" srcset="/img/loading.gif" lazyload alt="img" style="zoom:67%;"></li>
+<li><strong>复制（Copy）</strong><br>将内存按容量划分为两块，每次只使用其中一块。当这一块内存用完了，就将存活的对象复制到另一块上，然后再把已使用的内存空间一次清理掉。这样使得每次都是对半个内存区回收，也不用考虑内存碎片问题，简单高效。缺点需要两倍的内存空间。<img src="https://nyimapicture.oss-cn-beijing.aliyuncs.com/img/20200608150842.png" alt="img" style="zoom:67%;"></li>
 </ul>
-<img src="https://nyimapicture.oss-cn-beijing.aliyuncs.com/img/20200608150856.png" srcset="/img/loading.gif" lazyload alt="img" style="zoom:67%;">
+<img src="https://nyimapicture.oss-cn-beijing.aliyuncs.com/img/20200608150856.png" alt="img" style="zoom:67%;">
 
-<img src="https://nyimapicture.oss-cn-beijing.aliyuncs.com/img/20200608150907.png" srcset="/img/loading.gif" lazyload alt="img" style="zoom:67%;">
+<img src="https://nyimapicture.oss-cn-beijing.aliyuncs.com/img/20200608150907.png" alt="img" style="zoom:67%;">
 
-<img src="https://nyimapicture.oss-cn-beijing.aliyuncs.com/img/20200608150919.png" srcset="/img/loading.gif" lazyload alt="img" style="zoom:67%;">
+<img src="https://nyimapicture.oss-cn-beijing.aliyuncs.com/img/20200608150919.png" alt="img" style="zoom:67%;">
 
 <ul>
 <li><strong>标记-整理（Mark-Compact）</strong><br>也分为两个阶段，首先标记可回收的对象，再将存活的对象都向一端移动，然后清理掉边界以外的内存。此方法避免标记-清除算法的碎片问题，同时也避免了复制算法的空间问题。<br>一般年轻代中执行GC后，会有少量的对象存活，就会选用复制算法，只要付出少量的存活对象复制成本就可以完成收集。而老年代中因为对象存活率高，没有额外过多内存空间分配，就需要使用标记-清理或者标记-整理算法来进行回收。</li>
 </ul>
-<img src="https://nyimapicture.oss-cn-beijing.aliyuncs.com/img/20200608150827.png" srcset="/img/loading.gif" lazyload alt="img" style="zoom:67%;">
+<img src="https://nyimapicture.oss-cn-beijing.aliyuncs.com/img/20200608150827.png" alt="img" style="zoom:67%;">
 
 <h3 id="4-分代回收"><a href="#4-分代回收" class="headerlink" title="4.分代回收"></a>4.分代回收</h3><p>将堆内存分为两个部分，一部分名为新生代，一部分名为老年代</p>
-<img src="https://nyimapicture.oss-cn-beijing.aliyuncs.com/img/20200608150931.png" srcset="/img/loading.gif" lazyload alt="img" style="zoom:67%;">
+<img src="https://nyimapicture.oss-cn-beijing.aliyuncs.com/img/20200608150931.png" alt="img" style="zoom:67%;">
 
 <p>其中新生代分为了伊甸园，幸存区from，幸存区to。</p>
 <p>首先，new出来的对象在伊甸园进行创建</p>
@@ -629,7 +615,7 @@
 <p>4).-XX:InitialTenuringThreshol和-XX:MaxTenuringThreshold</p>
 <p>用于设置晋升到老年代的对象年龄的最小值和最大值，每个对象在坚持过一次Minor GC之后，年龄就加1。</p>
 <p>康康jstart输出</p>
-<p><img src="/2021/10/03/jvm/image-20210805074443338.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2021/10/03/jvm/image-20210805074443338.png"></p>
 <p>其中各参数代表</p>
 <ul>
 <li>S0，S1，两个survivor区域，可以看到它们的使用率为0</li>
@@ -669,10 +655,10 @@
 <ul>
 <li>G1不再坚持固定大小以及固定数量的<br>分代区域划分，而是把连续的Java堆划分为多个大小相等的独立区域（Region），每一个Region都可以根据需要，扮演新生代的Eden空间、Survivor空间，或者老年代空间。收集器能够对扮演不同角色的<br>Region采用不同的策略去处理，这样无论是新创建的对象还是已经存活了一段时间、熬过多次收集的<br>旧对象都能获取很好的收集效果</li>
 </ul>
-<img src="https://tse1-mm.cn.bing.net/th/id/R-C.d6e8f8b74e546354d6cc594269f88487?rik=BezOq%2fgcDZHlWw&riu=http%3a%2f%2fupload-images.jianshu.io%2fupload_images%2f2184951-256a9ccb6e51be85.png&ehk=6aQFuTMvcG2m353MYMeVw4gN4PZ0p1xl%2bkzX5pUOPEk%3d&risl=&pid=ImgRaw&r=0" srcset="/img/loading.gif" lazyload alt="查看源图像" style="zoom: 50%;">
+<img src="https://tse1-mm.cn.bing.net/th/id/R-C.d6e8f8b74e546354d6cc594269f88487?rik=BezOq%2fgcDZHlWw&riu=http%3a%2f%2fupload-images.jianshu.io%2fupload_images%2f2184951-256a9ccb6e51be85.png&ehk=6aQFuTMvcG2m353MYMeVw4gN4PZ0p1xl%2bkzX5pUOPEk%3d&risl=&pid=ImgRaw&r=0" alt="查看源图像" style="zoom: 50%;">
 
 <p>G1：分为了四个执行步骤：</p>
-<img src="/2021/10/03/jvm/image.2BEI70.png" srcset="/img/loading.gif" lazyload style="zoom: 67%;">
+<img src="/2021/10/03/jvm/image.2BEI70.png" style="zoom: 67%;">
 
 <ul>
 <li>初始标记，</li>
@@ -734,13 +720,13 @@
 <li>频繁Full GC会增加暂停时间和CPU使用率，可以加大老年代空间大小降低Full GC，但会增加回收时间，根据业务适当取舍。</li>
 </ul>
 <h2 id="类加载"><a href="#类加载" class="headerlink" title="类加载"></a>类加载</h2><p>类从被加载到虚拟机内存到被卸载，整个完整的生命周期包括：类加载、验证、准备、解析、初始化、使用和卸载七个阶段。其中验证，准备，解析三个部分统称为连接。接下来我们可以详细了解下类加载的各个过程。</p>
-<img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/3279460766e7484dbee19e086739d0f0~tplv-k3u1fbpfcp-no-mark:1280:960:0:0.awebp" srcset="/img/loading.gif" lazyload alt="img" style="zoom:33%;">
+<img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/3279460766e7484dbee19e086739d0f0~tplv-k3u1fbpfcp-no-mark:1280:960:0:0.awebp" alt="img" style="zoom:33%;">
 
 <p>这里还是快进到看《深入理解Java虚拟机》把</p>
 <p>虽然classloader的加载过程有复杂的5步，但事实上除了加载之外的四步，其它都是由JVM虚拟机控制的，我们除了适应它的规范进行开发外，能够干预的空间并不多。而加载则是我们控制classloader实现特殊目的最重要的手段了。</p>
 <p>双亲委托机制</p>
 <p>这个东西和事件分发有点相反，事件分发是先往下推，在往上推，而类加载机制是先往上推，没人推了，在执行</p>
-<img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/5e6b8ee8c76847ed85f25d2624c35985~tplv-k3u1fbpfcp-no-mark:1280:960:0:0.awebp" srcset="/img/loading.gif" lazyload alt="img" style="zoom: 33%;">
+<img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/5e6b8ee8c76847ed85f25d2624c35985~tplv-k3u1fbpfcp-no-mark:1280:960:0:0.awebp" alt="img" style="zoom: 33%;">
 
 <p>双亲委派模型能够保证同一个类最终会被特定的类加载器加载。</p>
 <p>例如类java.lang.Object,它存放在rt.jart之中.无论哪一个类加载器都要加载这个类.最终都是双亲委派模型最顶端的Bootstrap类加载器去加载.因此Object类在程序的各种类加载器环境中都是同一个类.相反.如果没有使用双亲委派模型.由各个类加载器自行去加载的话.如果用户编写了一个称为“java.lang.Object”的类.并存放在程序的ClassPath中.那系统中将会出现多个不同的Object类.java类型体系中最基础的行为也就无法保证.应用程序也将会一片混乱.</p>
@@ -757,265 +743,78 @@
 </li>
 </ul>
 
-            </div>
-            <hr>
-            <div>
-              <div class="post-metas mb-3">
-                
-                  <div class="post-meta mr-3">
-                    <i class="iconfont icon-category"></i>
-                    
-                      <a class="hover-with-bg" href="/categories/jvm/">jvm</a>
-                    
-                  </div>
-                
-                
-                  <div class="post-meta">
-                    <i class="iconfont icon-tags"></i>
-                    
-                      <a class="hover-with-bg" href="/tags/jvm%E5%9F%BA%E7%A1%80/">jvm基础</a>
-                    
-                  </div>
-                
-              </div>
-              
-                <p class="note note-warning">
-                  
-                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
-                  
-                </p>
-              
-              
-                <div class="post-prevnext">
-                  <article class="post-prev col-6">
-                    
-                    
-                      <a href="/2021/10/03/rust%E8%BE%93%E5%85%A5%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E5%BC%8F/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">rust输入的几种方式</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
-                  </article>
-                  <article class="post-next col-6">
-                    
-                    
-                      <a href="/2021/10/03/kotlin/">
-                        <span class="hidden-mobile">kotlin</span>
-                        <span class="visible-mobile">下一篇</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
-                    
-                  </article>
-                </div>
-              
-            </div>
-
-            
-              <!-- Comments -->
-              <article class="comments" id="comments" lazyload>
-                
-                  
-                
-                
-  <div id="gitalk-container"></div>
-  <script type="text/javascript">
-    Fluid.utils.loadComments('#gitalk-container', function() {
-      Fluid.utils.createCssLink('/css/gitalk.css')
-      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', function() {
-        var options = Object.assign(
-          {"clientID":"e086c91aae8335308d3b","clientSecret":"83104ef0c9423fc74a3350da23fa29464dc09f20","repo":"clannad603.github.io","owner":"clannad603","adminUser":"['clannad603']","language":"zh-CN","perPage":10,"pagerDirection":"last","distractionFreeMode":false,"createIssueManually":true,"proxy":"https://netnr-proxy.cloudno.de/https://github.com/login/oauth/access_token"},
-          {
-            id: '6a3d98217fa9f1989999633da8c8ea6b'
-          }
-        )
-        var gitalk = new Gitalk(options);
-        gitalk.render('gitalk-container');
-      });
-    });
-  </script>
-  <noscript>Please enable JavaScript to view the comments</noscript>
-
-
-              </article>
-            
-          </article>
-        </div>
-      </div>
     </div>
+
     
-      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
-        <div id="toc">
-  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
-  <div class="toc-body" id="toc-body"></div>
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/jvm%E5%9F%BA%E7%A1%80/" rel="tag"># jvm基础</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/10/03/kotlin/" rel="prev" title="kotlin">
+                  <i class="fa fa-chevron-left"></i> kotlin
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/10/03/rust%E8%BE%93%E5%85%A5%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E5%BC%8F/" rel="next" title="rust输入的几种方式">
+                  rust输入的几种方式 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
 </div>
 
-      </div>
-    
-  </div>
+
+
+
+
+
 </div>
-
-<!-- Custom -->
-
-
-    
-
-    
-      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
-        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
-      </a>
-    
-
-    
-      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
-     aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
-        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body mx-3">
-        <div class="md-form mb-5">
-          <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v"
-                 for="local-search-input">关键词</label>
-        </div>
-        <div class="list-group" id="local-search-result"></div>
-      </div>
-    </div>
-  </div>
-</div>
-    
-
-    
   </main>
 
-  <footer class="text-center mt-5 py-3">
-  <div class="footer-content">
-     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">HuangRui</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">61k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">56 分钟</span>
+  </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
   </div>
-  
-  <div class="statistics">
-    
-    
 
-    
-      
-        <!-- 不蒜子统计PV -->
-        <span id="busuanzi_container_site_pv" style="display: none">
-            总访问量 
-            <span id="busuanzi_value_site_pv"></span>
-             次
-          </span>
-      
-      
-        <!-- 不蒜子统计UV -->
-        <span id="busuanzi_container_site_uv" style="display: none">
-            总访客数 
-            <span id="busuanzi_value_site_uv"></span>
-             人
-          </span>
-      
-    
-  </div>
-
+    </div>
+  </footer>
 
   
-
-  
-</footer>
-
-
-  <!-- SCRIPTS -->
-  
-  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
-  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
-
-  <script>
-    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
-    NProgress.start()
-    window.addEventListener('load', function() {
-      NProgress.done();
-    })
-  </script>
-
-
-<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
-<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
-<script  src="/js/events.js" ></script>
-<script  src="/js/plugins.js" ></script>
-
-<!-- Plugins -->
-
-
-  <script  src="/js/local-search.js" ></script>
-
-
-
-  
-    <script  src="/js/img-lazyload.js" ></script>
-  
-
-
-
-  
-
-
-
-  
-    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
-  
-  
-    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
-  
-  
-    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
-  
-  
-    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
-  
-
-
-
-  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
-
-
-
-
-  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
-  <script>
-    (function (window, document) {
-      var typing = Fluid.plugins.typing;
-      var title = document.getElementById('subtitle').title;
-      
-      typing(title)
-      
-    })(window, document);
-  </script>
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-  
-
-  
-
-  
-
-  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
 
   
 
@@ -1023,8 +822,10 @@
 
 
 
-<!-- 主题的启动项 保持在最底部 -->
-<script  src="/js/boot.js" ></script>
+  
+
+
+
 
 
 </body>
