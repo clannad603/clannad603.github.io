@@ -196,7 +196,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      undefined 字
+      537 字
     </span>
   
 
@@ -205,7 +205,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      NaN 分钟
+      2 分钟
     </span>
   
 
@@ -255,7 +255,7 @@
 <p>在思考rust为什么要考虑这种方式时，个人对此有一点认为是，垃圾回收例如jvm的话，在回收垃圾时需要stop the world</p>
 <p>,这使得采用gc机制的性能会稍逊一筹，但是 c和cpp的手动管理，如果是粗心的程序员，那可能会导致一些严重的后果，（但是rust的所有权，生命周期也不太好学）</p>
 <p>来自官方文档上的例子</p>
-<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">as_str</span></span>(data: &amp;<span class="built_in">u32</span>) -&gt; &amp;<span class="built_in">str</span> &#123;</span><br><span class="line">    <span class="comment">// 计算字符串</span></span><br><span class="line">    <span class="keyword">let</span> s = <span class="built_in">format!</span>(<span class="string">&quot;&#123;&#125;&quot;</span>, data);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 哎呀！我们返回了一个只在函数内部存在的东西的引用</span></span><br><span class="line">    <span class="comment">// 悬垂指针！释放后引用！指针别名！</span></span><br><span class="line">    <span class="comment">// （当然这段代码在Rust中不能编译）</span></span><br><span class="line">    &amp;s</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">as_str</span></span>(data: &amp;<span class="hljs-built_in">u32</span>) -&gt; &amp;<span class="hljs-built_in">str</span> &#123;<br>    <span class="hljs-comment">// 计算字符串</span><br>    <span class="hljs-keyword">let</span> s = <span class="hljs-built_in">format!</span>(<span class="hljs-string">&quot;&#123;&#125;&quot;</span>, data);<br><br>    <span class="hljs-comment">// 哎呀！我们返回了一个只在函数内部存在的东西的引用</span><br>    <span class="hljs-comment">// 悬垂指针！释放后引用！指针别名！</span><br>    <span class="hljs-comment">// （当然这段代码在Rust中不能编译）</span><br>    &amp;s<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <p> Rust 的所有权系统使得Rust 知道 <code>&amp;s</code> 生效的作用域，所以可以避免出现逃逸</p>
 <p>有两种引用的类型：</p>
