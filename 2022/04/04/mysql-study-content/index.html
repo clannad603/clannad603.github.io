@@ -37,8 +37,23 @@
 <meta property="og:image" content="https://clannad603.github.io/2022/04/04/mysql-study-content/image-20220404171005626.png">
 <meta property="og:image" content="https://clannad603.github.io/2022/04/04/mysql-study-content/image-20220404171730016.png">
 <meta property="og:image" content="https://clannad603.github.io/2022/04/04/mysql-study-content/image-20220404172025533.png">
+<meta property="og:image" content="https://clannad603.github.io/2022/04/04/mysql-study-content/image-20220405184804426.png">
+<meta property="og:image" content="https://clannad603.github.io/2022/04/04/mysql-study-content/image-20220405192848308.png">
+<meta property="og:image" content="https://clannad603.github.io/2022/04/04/mysql-study-content/image-20220405192857376.png">
+<meta property="og:image" content="https://clannad603.github.io/2022/04/04/mysql-study-content/image-20220405193307038.png">
+<meta property="og:image" content="https://clannad603.github.io/2022/04/04/mysql-study-content/image-20220405193321941.png">
+<meta property="og:image" content="https://clannad603.github.io/2022/04/04/mysql-study-content/image-20220405193646224.png">
+<meta property="og:image" content="https://clannad603.github.io/2022/04/04/mysql-study-content/image-20220405193656394.png">
+<meta property="og:image" content="https://clannad603.github.io/2022/04/04/mysql-study-content/image-20220405193736966.png">
+<meta property="og:image" content="https://clannad603.github.io/2022/04/04/mysql-study-content/image-20220405193746746.png">
+<meta property="og:image" content="https://clannad603.github.io/2022/04/04/mysql-study-content/image-20220405194505918.png">
+<meta property="og:image" content="https://clannad603.github.io/2022/04/04/mysql-study-content/image-20220405194515090.png">
+<meta property="og:image" content="https://clannad603.github.io/2022/04/04/mysql-study-content/Screenshot_20220405-201322.png">
+<meta property="og:image" content="https://clannad603.github.io/2022/04/04/mysql-study-content/QQ%E5%9B%BE%E7%89%8720220405213907.png">
+<meta property="og:image" content="https://clannad603.github.io/2022/04/04/mysql-study-content/QQ%E5%9B%BE%E7%89%8720220405222556.png">
+<meta property="og:image" content="https://clannad603.github.io/2022/04/04/mysql-study-content/QQ%E5%9B%BE%E7%89%8720220405223848.png">
 <meta property="article:published_time" content="2022-04-04T07:22:02.000Z">
-<meta property="article:modified_time" content="2022-04-04T09:20:27.016Z">
+<meta property="article:modified_time" content="2022-04-05T14:55:30.292Z">
 <meta property="article:author" content="HuangRui">
 <meta property="article:tag" content="mysql">
 <meta property="article:tag" content="content">
@@ -212,7 +227,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      936 字
+      2.4k 字
     </span>
   
 
@@ -221,7 +236,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      3 分钟
+      7 分钟
     </span>
   
 
@@ -262,7 +277,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2022年4月4日 下午
+                  本文最后更新于：2022年4月5日 晚上
                 
               </p>
             
@@ -340,6 +355,88 @@
 <p><img src="/2022/04/04/mysql-study-content/image-20220404171730016.png" srcset="/img/loading.gif" lazyload alt="image-20220404171730016"></p>
 <h6 id="删除字段"><a href="#删除字段" class="headerlink" title="删除字段"></a>删除字段</h6><p><code>ALTER TABLE 表名 DROP 字段名;</code></p>
 <p><img src="/2022/04/04/mysql-study-content/image-20220404172025533.png" srcset="/img/loading.gif" lazyload alt="image-20220404172025533"></p>
+<h6 id="修改表名："><a href="#修改表名：" class="headerlink" title="修改表名："></a>修改表名：</h6><p><code>ALTER TABLE 表名 RENAME TO 新表名</code></p>
+<p><img src="/2022/04/04/mysql-study-content/image-20220405184804426.png" srcset="/img/loading.gif" lazyload alt="image-20220405184804426"></p>
+<h6 id="删除表"><a href="#删除表" class="headerlink" title="删除表"></a>删除表</h6><p><code>DROP TABLE [IF EXISTS]表名;</code></p>
+<h6 id="删除指定表，并重新创建该表"><a href="#删除指定表，并重新创建该表" class="headerlink" title="删除指定表，并重新创建该表"></a>删除指定表，并重新创建该表</h6><p><code>TRUNCATE TABLE 表名;</code></p>
+<h3 id="DML"><a href="#DML" class="headerlink" title="DML"></a>DML</h3><h4 id="DML添加数据"><a href="#DML添加数据" class="headerlink" title="DML添加数据"></a>DML添加数据</h4><h5 id="1-给指定字段添加数据："><a href="#1-给指定字段添加数据：" class="headerlink" title="1.给指定字段添加数据："></a>1.给指定字段添加数据：</h5><p><code>INSERT INTO 表名(字段1，字段2，...) VALUES(值1，值2,...);</code></p>
+<p><img src="/2022/04/04/mysql-study-content/image-20220405192848308.png" srcset="/img/loading.gif" lazyload alt="image-20220405192848308"></p>
+<p><img src="/2022/04/04/mysql-study-content/image-20220405192857376.png" srcset="/img/loading.gif" lazyload alt="image-20220405192857376"></p>
+<h5 id="2-给全部字段添加数据"><a href="#2-给全部字段添加数据" class="headerlink" title="2.给全部字段添加数据"></a>2.给全部字段添加数据</h5><p><code>INSERT INTO 表名VALUES (值1，值2);</code></p>
+<h5 id="3-批量添加数据"><a href="#3-批量添加数据" class="headerlink" title="3.批量添加数据"></a>3.批量添加数据</h5><p><code>INSERT INTO 表名(字段1,字段2)VALUES (值1，值2),(值1，值2);</code></p>
+<p><code>INSERT INTO表名VALUES(值1，值2),(值1，值2)；</code></p>
+<p><img src="/2022/04/04/mysql-study-content/image-20220405193307038.png" srcset="/img/loading.gif" lazyload alt="image-20220405193307038"></p>
+<p><img src="/2022/04/04/mysql-study-content/image-20220405193321941.png" srcset="/img/loading.gif" lazyload alt="image-20220405193321941"></p>
+<h4 id="DML修改数据"><a href="#DML修改数据" class="headerlink" title="DML修改数据"></a>DML修改数据</h4><p><code>UPDATE 表名 SET 字段1 = 值1 ，字段2 = 值2 ，[WHERE 条件];</code></p>
+<p>测试1：</p>
+<p><img src="/2022/04/04/mysql-study-content/image-20220405193646224.png" srcset="/img/loading.gif" lazyload alt="image-20220405193646224"></p>
+<p><img src="/2022/04/04/mysql-study-content/image-20220405193656394.png" srcset="/img/loading.gif" lazyload alt="image-20220405193656394"></p>
+<p>测试2：</p>
+<p><img src="/2022/04/04/mysql-study-content/image-20220405193736966.png" srcset="/img/loading.gif" lazyload alt="image-20220405193736966"></p>
+<p><img src="/2022/04/04/mysql-study-content/image-20220405193746746.png" srcset="/img/loading.gif" lazyload alt="image-20220405193746746"></p>
+<h4 id="DML删除数据"><a href="#DML删除数据" class="headerlink" title="DML删除数据"></a>DML删除数据</h4><p><code>DELETE FROM 表名[WHERE 条件];</code></p>
+<p><img src="/2022/04/04/mysql-study-content/image-20220405194505918.png" srcset="/img/loading.gif" lazyload alt="image-20220405194505918"></p>
+<p><img src="/2022/04/04/mysql-study-content/image-20220405194515090.png" srcset="/img/loading.gif" lazyload alt="image-20220405194515090"></p>
+<h3 id="DQL"><a href="#DQL" class="headerlink" title="DQL"></a>DQL</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> <br>	字段列表<br><span class="hljs-keyword">FROM</span> <br>	表名列表<br><span class="hljs-keyword">WHERE</span> <br>    条件列表<br><span class="hljs-keyword">GROUP</span> <span class="hljs-keyword">BY</span><br>	分组字段列表<br><span class="hljs-keyword">HAVING</span> <br>	分组后条件列表<br><span class="hljs-keyword">ORDER</span> <span class="hljs-keyword">BY</span><br>	排序字段列表<br>LIMIT<br>    分页参数<br></code></pre></td></tr></table></figure>
+
+<h4 id="DQL-基本查询"><a href="#DQL-基本查询" class="headerlink" title="DQL 基本查询"></a>DQL 基本查询</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-number">1.</span>查询多个字段<br><span class="hljs-keyword">SELECT</span> 字段<span class="hljs-number">1</span> ,字段<span class="hljs-number">2</span>, ...<span class="hljs-keyword">FROM</span> 表名;<br><span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> 表名;<br><span class="hljs-number">2.</span>设置别名<br><span class="hljs-keyword">SELECT</span> 字段<span class="hljs-number">1</span> [<span class="hljs-keyword">AS</span>  别名<span class="hljs-number">1</span>] ,字段<span class="hljs-number">2</span> [<span class="hljs-keyword">AS</span> 别名<span class="hljs-number">2</span>]...<span class="hljs-keyword">FROM</span>表名;<br><span class="hljs-number">3.</span>去除重复记录<br><span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">DISTINCT</span> 字段列表 <span class="hljs-keyword">FROM</span>表名;<br></code></pre></td></tr></table></figure>
+
+<h4 id="DQL-条件查询"><a href="#DQL-条件查询" class="headerlink" title="DQL 条件查询"></a>DQL 条件查询</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> 字段列表 <span class="hljs-keyword">FROM</span> 表名 <span class="hljs-keyword">WHERE</span> 条件列表<br></code></pre></td></tr></table></figure>
+
+<p><img src="/2022/04/04/mysql-study-content/Screenshot_20220405-201322.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="DQL聚合函数"><a href="#DQL聚合函数" class="headerlink" title="DQL聚合函数"></a>DQL聚合函数</h4><p>将一列数据作为一个整体，进行纵向计算</p>
+<table>
+<thead>
+<tr>
+<th>函数</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>count</td>
+<td>统计数量</td>
+</tr>
+<tr>
+<td>max</td>
+<td>最大值</td>
+</tr>
+<tr>
+<td>min</td>
+<td>最小值</td>
+</tr>
+<tr>
+<td>avg</td>
+<td>平均值</td>
+</tr>
+<tr>
+<td>sum</td>
+<td>求和</td>
+</tr>
+</tbody></table>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> 聚合函数(字段列表) <span class="hljs-keyword">FROM</span> 表名<br></code></pre></td></tr></table></figure>
+
+<h4 id="DQL分组查询"><a href="#DQL分组查询" class="headerlink" title="DQL分组查询"></a>DQL分组查询</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> 字段列表 <span class="hljs-keyword">FROM</span> 表名 [<span class="hljs-keyword">WHERE</span> 条件]<span class="hljs-keyword">GROUP</span> <span class="hljs-keyword">BY</span>分组字段名 [<span class="hljs-keyword">HAVING</span> 分组后过滤条件];<br></code></pre></td></tr></table></figure>
+
+<ol>
+<li>where 分组前过滤 having 分组后过滤</li>
+<li>where不能对聚合函数进行判断 having 可以</li>
+</ol>
+<p><img src="/2022/04/04/mysql-study-content/QQ%E5%9B%BE%E7%89%8720220405213907.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="DQL排序查询"><a href="#DQL排序查询" class="headerlink" title="DQL排序查询"></a>DQL排序查询</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> 字段列表 <span class="hljs-keyword">FROM</span> 表名 <span class="hljs-keyword">ORDER</span> <span class="hljs-keyword">BY</span> 字段<span class="hljs-number">1</span> 排序方式<span class="hljs-number">1</span> ，字段<span class="hljs-number">2</span> 排序方法<span class="hljs-number">2</span>;<br></code></pre></td></tr></table></figure>
+
+<p>ASC:升序 可省略</p>
+<p>DESC：降序</p>
+<p>先对字段一排序后在排字段2</p>
+<h4 id="DQL分页查询"><a href="#DQL分页查询" class="headerlink" title="DQL分页查询"></a>DQL分页查询</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> 字段列表 <span class="hljs-keyword">FROM</span> 表名 LIMIT 起始索引 ，查询记录数;<br></code></pre></td></tr></table></figure>
+
+<p>起始索引由0开始，查第几页就用 （页码-1）*页展示记录数</p>
+<h4 id="DQL执行顺序"><a href="#DQL执行顺序" class="headerlink" title="DQL执行顺序"></a>DQL执行顺序</h4><p><img src="/2022/04/04/mysql-study-content/QQ%E5%9B%BE%E7%89%8720220405222556.png" srcset="/img/loading.gif" lazyload alt="QQ图片20220405222556"></p>
+<h3 id="DCL"><a href="#DCL" class="headerlink" title="DCL"></a>DCL</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-number">1.</span>查询用户<br>USE mysql;<br><span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> <span class="hljs-keyword">user</span>;<br><span class="hljs-number">2.</span>创建用户<br><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">USER</span> <span class="hljs-string">&#x27;用户名&#x27;</span>@<span class="hljs-string">&#x27;主机名&#x27;</span> IDENTIFIED <span class="hljs-keyword">BY</span> <span class="hljs-string">&#x27;密码&#x27;</span>;<br><span class="hljs-number">3.</span>修改用户密码<br><span class="hljs-keyword">ALTER</span> <span class="hljs-keyword">USER</span> <span class="hljs-string">&#x27;用户名&#x27;</span>@<span class="hljs-string">&#x27;主机名&#x27;</span> IDENTIFIED <span class="hljs-keyword">WITH</span> mysql_native_passwoed <span class="hljs-keyword">BY</span> <span class="hljs-string">&#x27;新密码&#x27;</span>;<br><span class="hljs-number">4.</span>删除用户<br><span class="hljs-keyword">DROP</span> <span class="hljs-keyword">USER</span> <span class="hljs-string">&#x27;用户名&#x27;</span>@<span class="hljs-string">&#x27;主机名&#x27;</span>;<br><br></code></pre></td></tr></table></figure>
+
+<h4 id="DCL权限控制"><a href="#DCL权限控制" class="headerlink" title="DCL权限控制"></a>DCL权限控制</h4><p><img src="/2022/04/04/mysql-study-content/QQ%E5%9B%BE%E7%89%8720220405223848.png" srcset="/img/loading.gif" lazyload></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-number">1.</span>查询权限<br><span class="hljs-keyword">SHOW</span> GRANTS <span class="hljs-keyword">FOR</span> <span class="hljs-string">&#x27;用户名&#x27;</span>@<span class="hljs-string">&#x27;主机名&#x27;</span>;<br><span class="hljs-number">2.</span>授予权限<br><span class="hljs-keyword">GRANT</span> 权限列表 <span class="hljs-keyword">ON</span> 数据库名.表名 <span class="hljs-keyword">TO</span> <span class="hljs-string">&#x27;用户名&#x27;</span>@<span class="hljs-string">&#x27;主机名&#x27;</span>;<br><span class="hljs-number">3.</span>撤销权限<br><span class="hljs-keyword">REVOKE</span> 权限列表 <span class="hljs-keyword">ON</span> 数据库名.表名 <span class="hljs-keyword">FROM</span> <span class="hljs-string">&#x27;用户名&#x27;</span>@<span class="hljs-string">&#x27;主机名&#x27;</span>;<br></code></pre></td></tr></table></figure>
+
+<p>全部权限可以使用 all</p>
 
             </div>
             <hr>
@@ -375,6 +472,12 @@
                 <div class="post-prevnext">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/2022/04/05/mysql-study-function/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">mysql_study_function</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">

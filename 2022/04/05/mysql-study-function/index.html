@@ -1,0 +1,718 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="HuangRui">
+  <meta name="keywords" content="">
+  <meta name="description" content="函数函数指一段可以直接被另一段程序调用的程序或代码 字符串函数 使用：  数值函数 使用：     流程函数 使用：  约束 约束作用于表中字段，可在创建或修改表时添加约束 eg:  123456789create table user(    id     int primary key auto_increment comment &amp;#x27;主键&amp;#x27;,    name   varch">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mysql_study_function">
+<meta property="og:url" content="https://clannad603.github.io/2022/04/05/mysql-study-function/index.html">
+<meta property="og:site_name" content="普通重邮学生的blog">
+<meta property="og:description" content="函数函数指一段可以直接被另一段程序调用的程序或代码 字符串函数 使用：  数值函数 使用：     流程函数 使用：  约束 约束作用于表中字段，可在创建或修改表时添加约束 eg:  123456789create table user(    id     int primary key auto_increment comment &amp;#x27;主键&amp;#x27;,    name   varch">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://clannad603.github.io/2022/04/05/mysql-study-function/20859616491707912.png">
+<meta property="og:image" content="https://clannad603.github.io/2022/04/05/mysql-study-function/31421316492035742.png">
+<meta property="og:image" content="https://clannad603.github.io/2022/04/05/mysql-study-function/image-20220407093902561.png">
+<meta property="og:image" content="https://clannad603.github.io/2022/04/05/mysql-study-function/image-20220407093957815.png">
+<meta property="og:image" content="https://clannad603.github.io/2022/04/05/mysql-study-function/image-20220407094009537.png">
+<meta property="og:image" content="https://clannad603.github.io/2022/04/05/mysql-study-function/image-20220407094026082.png">
+<meta property="og:image" content="https://clannad603.github.io/2022/04/05/mysql-study-function/image-20220407094041123.png">
+<meta property="og:image" content="https://clannad603.github.io/2022/04/05/mysql-study-function/2365716492037132.png">
+<meta property="og:image" content="https://clannad603.github.io/2022/04/05/mysql-study-function/42463416492039232.png">
+<meta property="og:image" content="https://clannad603.github.io/2022/04/05/mysql-study-function/image-20220407094129416.png">
+<meta property="og:image" content="https://clannad603.github.io/2022/04/05/mysql-study-function/image-20220407094247582.png">
+<meta property="og:image" content="https://clannad603.github.io/2022/04/05/mysql-study-function/image-20220407095125203.png">
+<meta property="og:image" content="https://clannad603.github.io/2022/04/05/mysql-study-function/image-20220407095305663.png">
+<meta property="og:image" content="https://clannad603.github.io/2022/04/05/mysql-study-function/image-20220407095757409.png">
+<meta property="og:image" content="https://clannad603.github.io/2022/04/05/mysql-study-function/image-20220407100225430.png">
+<meta property="og:image" content="https://clannad603.github.io/2022/04/05/mysql-study-function/image-20220407101807703.png">
+<meta property="og:image" content="https://clannad603.github.io/2022/04/05/mysql-study-function/image-20220407102104800.png">
+<meta property="og:image" content="https://clannad603.github.io/2022/04/05/mysql-study-function/image-20220407103207125.png">
+<meta property="og:image" content="https://clannad603.github.io/2022/04/05/mysql-study-function/image-20220407103317347.png">
+<meta property="og:image" content="https://clannad603.github.io/2022/04/05/mysql-study-function/image-20220407105627008.png">
+<meta property="og:image" content="https://clannad603.github.io/2022/04/05/mysql-study-function/image-20220407105723501.png">
+<meta property="og:image" content="https://clannad603.github.io/2022/04/05/mysql-study-function/image-20220407105837045.png">
+<meta property="og:image" content="https://clannad603.github.io/2022/04/05/mysql-study-function/image-20220407110115241.png">
+<meta property="og:image" content="https://clannad603.github.io/2022/04/05/mysql-study-function/image-20220407111301952.png">
+<meta property="og:image" content="https://clannad603.github.io/2022/04/05/mysql-study-function/image-20220407111741983.png">
+<meta property="og:image" content="https://clannad603.github.io/2022/04/05/mysql-study-function/image-20220407111847767.png">
+<meta property="og:image" content="https://clannad603.github.io/2022/04/05/mysql-study-function/image-20220407112008331.png">
+<meta property="og:image" content="https://clannad603.github.io/2022/04/05/mysql-study-function/image-20220407112221280.png">
+<meta property="og:image" content="https://clannad603.github.io/2022/04/05/mysql-study-function/image-20220407112252031.png">
+<meta property="og:image" content="https://clannad603.github.io/2022/04/05/mysql-study-function/image-20220407112835991.png">
+<meta property="og:image" content="https://clannad603.github.io/2022/04/05/mysql-study-function/image-20220407113019187.png">
+<meta property="og:image" content="https://clannad603.github.io/2022/04/05/mysql-study-function/image-20220407113228764.png">
+<meta property="og:image" content="https://clannad603.github.io/2022/04/05/mysql-study-function/image-20220407113503202.png">
+<meta property="og:image" content="https://clannad603.github.io/2022/04/05/mysql-study-function/image-20220407113836773.png">
+<meta property="og:image" content="https://clannad603.github.io/2022/04/05/mysql-study-function/image-20220407114131861.png">
+<meta property="og:image" content="https://clannad603.github.io/2022/04/05/mysql-study-function/image-20220407114325595.png">
+<meta property="og:image" content="https://clannad603.github.io/2022/04/05/mysql-study-function/image-20220407114746685.png">
+<meta property="og:image" content="https://clannad603.github.io/2022/04/05/mysql-study-function/image-20220407114953974.png">
+<meta property="og:image" content="https://clannad603.github.io/2022/04/05/mysql-study-function/image-20220407121703318.png">
+<meta property="og:image" content="https://clannad603.github.io/2022/04/05/mysql-study-function/image-20220407121942968.png">
+<meta property="og:image" content="https://clannad603.github.io/2022/04/05/mysql-study-function/image-20220407121954813.png">
+<meta property="og:image" content="https://clannad603.github.io/2022/04/05/mysql-study-function/image-20220407122143210.png">
+<meta property="og:image" content="https://clannad603.github.io/2022/04/05/mysql-study-function/image-20220407122314560.png">
+<meta property="og:image" content="https://clannad603.github.io/2022/04/05/mysql-study-function/image-20220407122526521.png">
+<meta property="og:image" content="https://clannad603.github.io/2022/04/05/mysql-study-function/image-20220407122726837.png">
+<meta property="og:image" content="https://clannad603.github.io/2022/04/05/mysql-study-function/image-20220407122928495.png">
+<meta property="og:image" content="https://clannad603.github.io/2022/04/05/mysql-study-function/image-20220407123121021.png">
+<meta property="og:image" content="https://clannad603.github.io/2022/04/05/mysql-study-function/image-20220407123258682.png">
+<meta property="og:image" content="https://clannad603.github.io/2022/04/05/mysql-study-function/image-20220407123433712.png">
+<meta property="og:image" content="https://clannad603.github.io/2022/04/05/mysql-study-function/image-20220407123635693.png">
+<meta property="og:image" content="https://clannad603.github.io/2022/04/05/mysql-study-function/image-20220408092931073.png">
+<meta property="og:image" content="https://clannad603.github.io/2022/04/05/mysql-study-function/image-20220408093815776.png">
+<meta property="og:image" content="https://clannad603.github.io/2022/04/05/mysql-study-function/image-20220408094323641.png">
+<meta property="og:image" content="https://clannad603.github.io/2022/04/05/mysql-study-function/image-20220408094720179.png">
+<meta property="og:image" content="https://clannad603.github.io/2022/04/05/mysql-study-function/image-20220408094913592.png">
+<meta property="og:image" content="https://clannad603.github.io/2022/04/05/mysql-study-function/image-20220408095400986.png">
+<meta property="og:image" content="https://clannad603.github.io/2022/04/05/mysql-study-function/image-20220408095422276.png">
+<meta property="og:image" content="https://clannad603.github.io/2022/04/05/mysql-study-function/image-20220408095710524.png">
+<meta property="article:published_time" content="2022-04-05T14:56:37.000Z">
+<meta property="article:modified_time" content="2022-04-08T02:05:27.268Z">
+<meta property="article:author" content="HuangRui">
+<meta property="article:tag" content="mysql">
+<meta property="article:tag" content="function">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://clannad603.github.io/2022/04/05/mysql-study-function/20859616491707912.png">
+  
+  <title>mysql_study_function - 普通重邮学生的blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"clannad603.github.io","root":"/","version":"1.8.12","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname"}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Hr&#39;blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/article.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="mysql_study_function">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-04-05 22:56" pubdate>
+        2022年4月5日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      3.6k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      11 分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">mysql_study_function</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2022年4月8日 上午
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h3 id><a href="#" class="headerlink" title></a></h3><h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><p>函数指一段可以直接被另一段程序调用的程序或代码</p>
+<h3 id="字符串函数"><a href="#字符串函数" class="headerlink" title="字符串函数"></a>字符串函数</h3><p><img src="/2022/04/05/mysql-study-function/20859616491707912.png" srcset="/img/loading.gif" lazyload></p>
+<p>使用：</p>
+<p><img src="/2022/04/05/mysql-study-function/31421316492035742.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="数值函数"><a href="#数值函数" class="headerlink" title="数值函数"></a>数值函数</h3><p><img src="/2022/04/05/mysql-study-function/image-20220407093902561.png" srcset="/img/loading.gif" lazyload alt="image-20220407093902561"></p>
+<p>使用：</p>
+<p><img src="/2022/04/05/mysql-study-function/image-20220407093957815.png" srcset="/img/loading.gif" lazyload alt="image-20220407093957815"></p>
+<p><img src="/2022/04/05/mysql-study-function/image-20220407094009537.png" srcset="/img/loading.gif" lazyload alt="image-20220407094009537"></p>
+<p><img src="/2022/04/05/mysql-study-function/image-20220407094026082.png" srcset="/img/loading.gif" lazyload alt="image-20220407094026082"></p>
+<p><img src="/2022/04/05/mysql-study-function/image-20220407094041123.png" srcset="/img/loading.gif" lazyload alt="image-20220407094041123"></p>
+<h3 id="流程函数"><a href="#流程函数" class="headerlink" title="流程函数"></a>流程函数</h3><p><img src="/2022/04/05/mysql-study-function/2365716492037132.png" srcset="/img/loading.gif" lazyload></p>
+<p>使用：</p>
+<p><img src="/2022/04/05/mysql-study-function/42463416492039232.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="约束"><a href="#约束" class="headerlink" title="约束"></a>约束</h2><p><img src="/2022/04/05/mysql-study-function/image-20220407094129416.png" srcset="/img/loading.gif" lazyload alt="image-20220407094129416"></p>
+<p>约束作用于表中字段，可在创建或修改表时添加约束</p>
+<p>eg:</p>
+<p><img src="/2022/04/05/mysql-study-function/image-20220407094247582.png" srcset="/img/loading.gif" lazyload alt="image-20220407094247582"></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">create</span> <span class="hljs-keyword">table</span> <span class="hljs-keyword">user</span><br>(<br>    id     <span class="hljs-type">int</span> <span class="hljs-keyword">primary</span> key auto_increment comment <span class="hljs-string">&#x27;主键&#x27;</span>,<br>    name   <span class="hljs-type">varchar</span>(<span class="hljs-number">10</span>) <span class="hljs-keyword">not</span> <span class="hljs-keyword">null</span> <span class="hljs-keyword">unique</span> comment <span class="hljs-string">&#x27;姓名&#x27;</span>,<br>    age    <span class="hljs-type">int</span> <span class="hljs-keyword">check</span> ( age <span class="hljs-operator">&gt;</span> <span class="hljs-number">0</span> <span class="hljs-operator">&amp;&amp;</span> age <span class="hljs-operator">&lt;=</span> <span class="hljs-number">120</span> ) comment <span class="hljs-string">&#x27;年龄&#x27;</span>,<br>    status <span class="hljs-type">char</span>(<span class="hljs-number">1</span>) <span class="hljs-keyword">default</span> <span class="hljs-string">&#x27;1&#x27;</span> comment <span class="hljs-string">&#x27;状态&#x27;</span>,<br>    gender <span class="hljs-type">char</span>(<span class="hljs-number">1</span>) comment <span class="hljs-string">&#x27;性别&#x27;</span><br>) comment <span class="hljs-string">&#x27;用户表&#x27;</span>;<br><br></code></pre></td></tr></table></figure>
+
+<p>执行此语句后</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">insert</span> <span class="hljs-keyword">into</span> <span class="hljs-keyword">user</span>(name, age, status, gender) <span class="hljs-keyword">values</span> (<span class="hljs-string">&#x27;TOM1&#x27;</span>,<span class="hljs-number">19</span>,<span class="hljs-string">&#x27;1&#x27;</span>,<span class="hljs-string">&#x27;男&#x27;</span>),(<span class="hljs-string">&#x27;TOM2&#x27;</span>,<span class="hljs-number">25</span>,<span class="hljs-string">&#x27;0&#x27;</span>,<span class="hljs-string">&#x27;男&#x27;</span>);<br></code></pre></td></tr></table></figure>
+
+<p>运行结果如下：</p>
+<p><img src="/2022/04/05/mysql-study-function/image-20220407095125203.png" srcset="/img/loading.gif" lazyload alt="image-20220407095125203"></p>
+<p>在执行此语句后，：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">insert</span> <span class="hljs-keyword">into</span> <span class="hljs-keyword">user</span>(name, age, status, gender) <span class="hljs-keyword">values</span> (<span class="hljs-keyword">null</span>,<span class="hljs-number">19</span>,<span class="hljs-string">&#x27;1&#x27;</span>,<span class="hljs-string">&#x27;男&#x27;</span>);<br></code></pre></td></tr></table></figure>
+
+<p>由于name字段不能为空，将产生报错</p>
+<p><img src="/2022/04/05/mysql-study-function/image-20220407095305663.png" srcset="/img/loading.gif" lazyload alt="image-20220407095305663"></p>
+<p>执行此语句：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">insert</span> <span class="hljs-keyword">into</span> <span class="hljs-keyword">user</span>(name, age, status, gender) <span class="hljs-keyword">values</span> (<span class="hljs-string">&#x27;TOM2&#x27;</span>,<span class="hljs-number">19</span>,<span class="hljs-string">&#x27;1&#x27;</span>,<span class="hljs-string">&#x27;男&#x27;</span>);<br></code></pre></td></tr></table></figure>
+
+<p>由于设置了unique约束，所以仍然将产生报错</p>
+<p><img src="/2022/04/05/mysql-study-function/image-20220407095757409.png" srcset="/img/loading.gif" lazyload alt="image-20220407095757409"></p>
+<h3 id="外键约束"><a href="#外键约束" class="headerlink" title="外键约束"></a>外键约束</h3><p>外键是用来让两张表的数据之间建立连接，从而保证数据的一致性和完整性</p>
+<p><img src="/2022/04/05/mysql-study-function/image-20220407100225430.png" srcset="/img/loading.gif" lazyload alt="image-20220407100225430"></p>
+<p>此例中的dept_id即为员工表的外键，用于连接部门表，且员工表被称为子表，部门表被称为父表，但仅仅如此在数据库层次上是没有任何联系的，因此需要执行sql语句来建立联系，</p>
+<p>演示：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">create</span> <span class="hljs-keyword">table</span> dept(<br>    id <span class="hljs-type">int</span> auto_increment comment <span class="hljs-string">&#x27;id&#x27;</span> <span class="hljs-keyword">primary</span> key ,<br>    name <span class="hljs-type">varchar</span>(<span class="hljs-number">50</span>) <span class="hljs-keyword">not</span> <span class="hljs-keyword">null</span> comment <span class="hljs-string">&#x27;部门名称&#x27;</span><br>);<br><br><span class="hljs-keyword">insert</span> <span class="hljs-keyword">into</span> dept(id, name) <span class="hljs-keyword">values</span> (<span class="hljs-number">1</span>,<span class="hljs-string">&#x27;研发部&#x27;</span>),(<span class="hljs-number">2</span>,<span class="hljs-string">&#x27;市场部&#x27;</span>),(<span class="hljs-number">3</span>,<span class="hljs-string">&#x27;财务部&#x27;</span>),(<span class="hljs-number">4</span>,<span class="hljs-string">&#x27;销售部&#x27;</span>),(<span class="hljs-number">5</span>,<span class="hljs-string">&#x27;总经办&#x27;</span>);<br><br><span class="hljs-keyword">create</span> <span class="hljs-keyword">table</span> emp(<br><br>    id <span class="hljs-type">int</span> auto_increment comment <span class="hljs-string">&#x27;id&#x27;</span> <span class="hljs-keyword">primary</span> key,<br>    name <span class="hljs-type">varchar</span>(<span class="hljs-number">50</span>) <span class="hljs-keyword">not</span> <span class="hljs-keyword">null</span> comment <span class="hljs-string">&#x27;姓名&#x27;</span>,<br>    age <span class="hljs-type">int</span> comment <span class="hljs-string">&#x27;年龄&#x27;</span>,<br>    job <span class="hljs-type">varchar</span>(<span class="hljs-number">20</span>) comment <span class="hljs-string">&#x27;职位&#x27;</span>,<br>    salary <span class="hljs-type">int</span> comment <span class="hljs-string">&#x27;薪资&#x27;</span>,<br>    entrydate <span class="hljs-type">date</span> comment <span class="hljs-string">&#x27;入职时间&#x27;</span>,<br>    managerid <span class="hljs-type">int</span> comment <span class="hljs-string">&#x27;直属领导人id&#x27;</span>,<br>    dept_id <span class="hljs-type">int</span> comment <span class="hljs-string">&#x27;部门id&#x27;</span><br> )comment <span class="hljs-string">&#x27;员工表&#x27;</span>;<br><br><span class="hljs-keyword">insert</span> <span class="hljs-keyword">into</span> emp (id, name, age, job, salary, entrydate, managerid, dept_id)<br><span class="hljs-keyword">values</span> (<span class="hljs-number">1</span>,<span class="hljs-string">&#x27;金庸&#x27;</span>,<span class="hljs-number">66</span>,<span class="hljs-string">&#x27;总裁&#x27;</span>,<span class="hljs-number">20000</span>,<span class="hljs-string">&#x27;2000-01-01&#x27;</span>,<span class="hljs-keyword">null</span>,<span class="hljs-number">5</span>),<br>       (<span class="hljs-number">2</span>,<span class="hljs-string">&#x27;张无忌&#x27;</span>,<span class="hljs-number">20</span>,<span class="hljs-string">&#x27;项目经理&#x27;</span>,<span class="hljs-number">12500</span>,<span class="hljs-string">&#x27;2005-12-05&#x27;</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>),<br>       (<span class="hljs-number">3</span>,<span class="hljs-string">&#x27;杨过&#x27;</span>,<span class="hljs-number">33</span>,<span class="hljs-string">&#x27;开发&#x27;</span>,<span class="hljs-number">8400</span>,<span class="hljs-string">&#x27;2000-11-03&#x27;</span>,<span class="hljs-number">2</span>,<span class="hljs-number">1</span>),<br>       (<span class="hljs-number">4</span>,<span class="hljs-string">&#x27;韦一笑&#x27;</span>,<span class="hljs-number">48</span>,<span class="hljs-string">&#x27;开发&#x27;</span>,<span class="hljs-number">11000</span>,<span class="hljs-string">&#x27;2002-02-05&#x27;</span>,<span class="hljs-number">2</span>,<span class="hljs-number">1</span>),<br>       (<span class="hljs-number">5</span>,<span class="hljs-string">&#x27;常遇春&#x27;</span>,<span class="hljs-number">43</span>,<span class="hljs-string">&#x27;开发&#x27;</span>,<span class="hljs-number">10500</span>,<span class="hljs-string">&#x27;2004-09-07&#x27;</span>,<span class="hljs-number">3</span>,<span class="hljs-number">1</span>),<br>       (<span class="hljs-number">6</span>,<span class="hljs-string">&#x27;小昭&#x27;</span>,<span class="hljs-number">19</span>,<span class="hljs-string">&#x27;程序员鼓励师&#x27;</span>,<span class="hljs-number">6600</span>,<span class="hljs-string">&#x27;2004-10-12&#x27;</span>,<span class="hljs-number">2</span>,<span class="hljs-number">1</span>);<br><br></code></pre></td></tr></table></figure>
+
+<p>执行完毕后将建立两张表，然鹅此时无关联</p>
+<p>添加外键的语法为：</p>
+<p><img src="/2022/04/05/mysql-study-function/image-20220407101807703.png" srcset="/img/loading.gif" lazyload alt="image-20220407101807703"></p>
+<p>执行此语句后将产生外键关联</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">alter</span> <span class="hljs-keyword">table</span> emp <span class="hljs-keyword">add</span> <span class="hljs-keyword">constraint</span>  fk_emp_dept_id <span class="hljs-keyword">foreign</span> key (dept_id) <span class="hljs-keyword">references</span> dept(id);<br></code></pre></td></tr></table></figure>
+
+<p><img src="/2022/04/05/mysql-study-function/image-20220407102104800.png" srcset="/img/loading.gif" lazyload alt="image-20220407102104800"></p>
+<p>使用datagrip查看时将发现外键图标发生了变化</p>
+<p>执行此语句将删除外键</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">alter</span> <span class="hljs-keyword">table</span> emp <span class="hljs-keyword">drop</span> <span class="hljs-keyword">foreign</span> key fk_emp_dept_id;<br></code></pre></td></tr></table></figure>
+
+<h3 id="外键相关操作"><a href="#外键相关操作" class="headerlink" title="外键相关操作"></a>外键相关操作</h3><p><img src="/2022/04/05/mysql-study-function/image-20220407103207125.png" srcset="/img/loading.gif" lazyload alt="image-20220407103207125"></p>
+<p><img src="/2022/04/05/mysql-study-function/image-20220407103317347.png" srcset="/img/loading.gif" lazyload alt="image-20220407103317347"></p>
+<p>例子：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">alter</span> <span class="hljs-keyword">table</span> emp <span class="hljs-keyword">add</span> <span class="hljs-keyword">constraint</span>  fk_emp_dept_id <span class="hljs-keyword">foreign</span> key (dept_id) <span class="hljs-keyword">references</span> dept(id) <span class="hljs-keyword">on</span> update cascade  <span class="hljs-keyword">on</span> <span class="hljs-keyword">delete</span> cascade ;<br></code></pre></td></tr></table></figure>
+
+<p>删除父表的属性后，子表关联属性也会被删除</p>
+<h2 id="多表查询"><a href="#多表查询" class="headerlink" title="多表查询"></a>多表查询</h2><h3 id="多表关系"><a href="#多表关系" class="headerlink" title="多表关系"></a>多表关系</h3><p><img src="/2022/04/05/mysql-study-function/image-20220407105627008.png" srcset="/img/loading.gif" lazyload alt="image-20220407105627008"></p>
+<h4 id="一对多："><a href="#一对多：" class="headerlink" title="一对多："></a>一对多：</h4><p><img src="/2022/04/05/mysql-study-function/image-20220407105723501.png" srcset="/img/loading.gif" lazyload alt="image-20220407105723501"></p>
+<h4 id="多对多："><a href="#多对多：" class="headerlink" title="多对多："></a>多对多：</h4><p><img src="/2022/04/05/mysql-study-function/image-20220407105837045.png" srcset="/img/loading.gif" lazyload alt="image-20220407105837045"></p>
+<h4 id="一对一关系："><a href="#一对一关系：" class="headerlink" title="一对一关系："></a>一对一关系：</h4><p><img src="/2022/04/05/mysql-study-function/image-20220407110115241.png" srcset="/img/loading.gif" lazyload alt="image-20220407110115241"></p>
+<h3 id="多表查询-1"><a href="#多表查询-1" class="headerlink" title="多表查询"></a>多表查询</h3><p><img src="/2022/04/05/mysql-study-function/image-20220407111301952.png" srcset="/img/loading.gif" lazyload alt="image-20220407111301952"></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">select</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">from</span> emp,dept <span class="hljs-keyword">where</span> dept.id <span class="hljs-operator">=</span> emp.dept_id<br></code></pre></td></tr></table></figure>
+
+<p>执行结果如下：</p>
+<p><img src="/2022/04/05/mysql-study-function/image-20220407111741983.png" srcset="/img/loading.gif" lazyload alt="image-20220407111741983"></p>
+<h4 id="多表查询分类"><a href="#多表查询分类" class="headerlink" title="多表查询分类"></a>多表查询分类</h4><p><img src="/2022/04/05/mysql-study-function/image-20220407111847767.png" srcset="/img/loading.gif" lazyload alt="image-20220407111847767"></p>
+<h4 id="内连接查询"><a href="#内连接查询" class="headerlink" title="内连接查询"></a>内连接查询</h4><p><img src="/2022/04/05/mysql-study-function/image-20220407112008331.png" srcset="/img/loading.gif" lazyload alt="image-20220407112008331"></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-number">1.</span>隐式内连接<br><span class="hljs-keyword">select</span> emp.name,dept.name <span class="hljs-keyword">from</span> emp,dept <span class="hljs-keyword">where</span> dept.id <span class="hljs-operator">=</span> emp.dept_id;<br><span class="hljs-number">2.</span>显式内连接<br><span class="hljs-keyword">select</span> e.name ,d.name <span class="hljs-keyword">from</span> emp e <span class="hljs-keyword">inner</span> <span class="hljs-keyword">join</span> dept d <span class="hljs-keyword">on</span> e.dept_id <span class="hljs-operator">=</span> d.id<br></code></pre></td></tr></table></figure>
+
+<p>执行结果：</p>
+<p><img src="/2022/04/05/mysql-study-function/image-20220407112221280.png" srcset="/img/loading.gif" lazyload alt="image-20220407112221280"></p>
+<p>也可以使用别名操作，效果相同</p>
+<p><img src="/2022/04/05/mysql-study-function/image-20220407112252031.png" srcset="/img/loading.gif" lazyload alt="image-20220407112252031"></p>
+<h4 id="外连接"><a href="#外连接" class="headerlink" title="外连接"></a>外连接</h4><p><img src="/2022/04/05/mysql-study-function/image-20220407112835991.png" srcset="/img/loading.gif" lazyload alt="image-20220407112835991"></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">select</span> e.<span class="hljs-operator">*</span> ,d.name <span class="hljs-keyword">from</span> emp e <span class="hljs-keyword">left</span> <span class="hljs-keyword">outer</span> <span class="hljs-keyword">join</span> dept d <span class="hljs-keyword">on</span> d.id <span class="hljs-operator">=</span> e.dept_id;<br></code></pre></td></tr></table></figure>
+
+<p><img src="/2022/04/05/mysql-study-function/image-20220407113019187.png" srcset="/img/loading.gif" lazyload alt="image-20220407113019187"></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">select</span> e.name ,d.<span class="hljs-operator">*</span><span class="hljs-keyword">from</span> emp e <span class="hljs-keyword">right</span> <span class="hljs-keyword">outer</span> <span class="hljs-keyword">join</span> dept d <span class="hljs-keyword">on</span> d.id <span class="hljs-operator">=</span> e.dept_id;<br></code></pre></td></tr></table></figure>
+
+<p><img src="/2022/04/05/mysql-study-function/image-20220407113228764.png" srcset="/img/loading.gif" lazyload alt="image-20220407113228764"></p>
+<h4 id="自联接"><a href="#自联接" class="headerlink" title="自联接"></a>自联接</h4><p><img src="/2022/04/05/mysql-study-function/image-20220407113503202.png" srcset="/img/loading.gif" lazyload alt="image-20220407113503202"></p>
+<p>例子：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">select</span> a.name,b.name <span class="hljs-keyword">from</span> emp a ,emp b <span class="hljs-keyword">where</span> a.managerid <span class="hljs-operator">=</span> b.id;<br></code></pre></td></tr></table></figure>
+
+<p><img src="/2022/04/05/mysql-study-function/image-20220407113836773.png" srcset="/img/loading.gif" lazyload alt="image-20220407113836773"></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">select</span> a.name <span class="hljs-string">&#x27;员工&#x27;</span>,b.name <span class="hljs-string">&#x27;领导&#x27;</span> <span class="hljs-keyword">from</span> emp a <span class="hljs-keyword">left</span> <span class="hljs-keyword">join</span> emp b <span class="hljs-keyword">on</span> a.managerid <span class="hljs-operator">=</span> b.id;<br></code></pre></td></tr></table></figure>
+
+<p><img src="/2022/04/05/mysql-study-function/image-20220407114131861.png" srcset="/img/loading.gif" lazyload alt="image-20220407114131861"></p>
+<h4 id="联合查询"><a href="#联合查询" class="headerlink" title="联合查询"></a>联合查询</h4><p><img src="/2022/04/05/mysql-study-function/image-20220407114325595.png" srcset="/img/loading.gif" lazyload alt="image-20220407114325595"></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">select</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">from</span> emp <span class="hljs-keyword">where</span> salary<span class="hljs-operator">&lt;</span><span class="hljs-number">5000</span> <span class="hljs-keyword">union</span> <span class="hljs-keyword">all</span> <span class="hljs-keyword">select</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">from</span> emp <span class="hljs-keyword">where</span> age<span class="hljs-operator">&lt;</span><span class="hljs-number">50</span>;<br><span class="hljs-keyword">select</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">from</span> emp <span class="hljs-keyword">where</span> salary<span class="hljs-operator">&lt;</span><span class="hljs-number">5000</span> <span class="hljs-keyword">union</span>  <span class="hljs-keyword">select</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">from</span> emp <span class="hljs-keyword">where</span> age<span class="hljs-operator">&lt;</span><span class="hljs-number">50</span>;<br><span class="hljs-comment">--合并后去重</span><br></code></pre></td></tr></table></figure>
+
+<p><img src="/2022/04/05/mysql-study-function/image-20220407114746685.png" srcset="/img/loading.gif" lazyload alt="image-20220407114746685"></p>
+<p>union 多张表的列数必须保持一致，字段类型也必须一致</p>
+<h4 id="子查询"><a href="#子查询" class="headerlink" title="子查询"></a>子查询</h4><p><img src="/2022/04/05/mysql-study-function/image-20220407114953974.png" srcset="/img/loading.gif" lazyload alt="image-20220407114953974"></p>
+<h5 id="标量子查询"><a href="#标量子查询" class="headerlink" title="标量子查询"></a>标量子查询</h5><p><img src="/2022/04/05/mysql-study-function/image-20220407121703318.png" srcset="/img/loading.gif" lazyload alt="image-20220407121703318"></p>
+<p><img src="/2022/04/05/mysql-study-function/image-20220407121942968.png" srcset="/img/loading.gif" lazyload alt="image-20220407121942968"></p>
+<p><img src="/2022/04/05/mysql-study-function/image-20220407121954813.png" srcset="/img/loading.gif" lazyload alt="image-20220407121954813"></p>
+<h5 id="列子查询"><a href="#列子查询" class="headerlink" title="列子查询"></a>列子查询</h5><p><img src="/2022/04/05/mysql-study-function/image-20220407122143210.png" srcset="/img/loading.gif" lazyload alt="image-20220407122143210"></p>
+<p>例子：</p>
+<p><img src="/2022/04/05/mysql-study-function/image-20220407122314560.png" srcset="/img/loading.gif" lazyload alt="image-20220407122314560"></p>
+<p><img src="/2022/04/05/mysql-study-function/image-20220407122526521.png" srcset="/img/loading.gif" lazyload alt="image-20220407122526521"></p>
+<p>个人理解为将待比较数据使用查询得到的替换来完成一级一级的嵌套</p>
+<p><img src="/2022/04/05/mysql-study-function/image-20220407122726837.png" srcset="/img/loading.gif" lazyload alt="image-20220407122726837"></p>
+<p>any用法与some类似</p>
+<h5 id="行字查询"><a href="#行字查询" class="headerlink" title="行字查询"></a>行字查询</h5><p><img src="/2022/04/05/mysql-study-function/image-20220407122928495.png" srcset="/img/loading.gif" lazyload alt="image-20220407122928495"></p>
+<p><img src="/2022/04/05/mysql-study-function/image-20220407123121021.png" srcset="/img/loading.gif" lazyload alt="image-20220407123121021"></p>
+<h5 id="表子查询"><a href="#表子查询" class="headerlink" title="表子查询"></a>表子查询</h5><p><img src="/2022/04/05/mysql-study-function/image-20220407123258682.png" srcset="/img/loading.gif" lazyload alt="image-20220407123258682"></p>
+<p><img src="/2022/04/05/mysql-study-function/image-20220407123433712.png" srcset="/img/loading.gif" lazyload alt="image-20220407123433712"></p>
+<p><img src="/2022/04/05/mysql-study-function/image-20220407123635693.png" srcset="/img/loading.gif" lazyload alt="image-20220407123635693"></p>
+<h3 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h3><p><img src="/2022/04/05/mysql-study-function/image-20220408092931073.png" srcset="/img/loading.gif" lazyload alt="image-20220408092931073"></p>
+<p>案例表：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">create</span> <span class="hljs-keyword">table</span> account(<br>  id <span class="hljs-type">int</span> auto_increment <span class="hljs-keyword">primary</span> key comment <span class="hljs-string">&#x27;主键&#x27;</span>,<br>  name <span class="hljs-type">varchar</span>(<span class="hljs-number">10</span>) comment <span class="hljs-string">&#x27;姓名&#x27;</span>,<br>  money <span class="hljs-type">int</span> comment <span class="hljs-string">&#x27;余额&#x27;</span><br>)comment <span class="hljs-string">&#x27;账户表&#x27;</span>;<br></code></pre></td></tr></table></figure>
+
+<h4 id="事务操作"><a href="#事务操作" class="headerlink" title="事务操作"></a>事务操作</h4><p><img src="/2022/04/05/mysql-study-function/image-20220408093815776.png" srcset="/img/loading.gif" lazyload alt="image-20220408093815776"></p>
+<p>datagrip 默认事务为自动提交，个人理解为，不需要手动提交，在执行sql语句后自动对数据库进行变更，如果自动提交则执行完sql语句就会自动更改数据库</p>
+<p><img src="/2022/04/05/mysql-study-function/image-20220408094323641.png" srcset="/img/loading.gif" lazyload alt="image-20220408094323641"></p>
+<p>在执行了此语句后事务需要手动提交而不考虑默认的自动提交属性</p>
+<h4 id="事务四大特性"><a href="#事务四大特性" class="headerlink" title="事务四大特性"></a>事务四大特性</h4><p><img src="/2022/04/05/mysql-study-function/image-20220408094720179.png" srcset="/img/loading.gif" lazyload alt="image-20220408094720179"></p>
+<h4 id="并发事务问题"><a href="#并发事务问题" class="headerlink" title="并发事务问题"></a>并发事务问题</h4><p><img src="/2022/04/05/mysql-study-function/image-20220408094913592.png" srcset="/img/loading.gif" lazyload alt="image-20220408094913592"></p>
+<ol>
+<li>脏读问题我认为是在一个事务还未结束时，并发的事务进行了更改操作导致原事务读取到了第二个事务还未提交的数据</li>
+<li>不可重复读我认为是原事务在执行了相同查询语句时，由于另外的事务进行了更新数据的提交导致查询结果不同</li>
+<li>幻读我认为是在事务一查询时不存在，然鹅事务2进行了插入数据并提交，事务1进行插入发现已存在。</li>
+</ol>
+<h4 id="事务隔离级别"><a href="#事务隔离级别" class="headerlink" title="事务隔离级别"></a>事务隔离级别</h4><p><img src="/2022/04/05/mysql-study-function/image-20220408095400986.png" srcset="/img/loading.gif" lazyload alt="image-20220408095400986"></p>
+<p>操作代码：</p>
+<p><img src="/2022/04/05/mysql-study-function/image-20220408095422276.png" srcset="/img/loading.gif" lazyload alt="image-20220408095422276"></p>
+<p>案例代码：</p>
+<p><img src="/2022/04/05/mysql-study-function/image-20220408095710524.png" srcset="/img/loading.gif" lazyload alt="image-20220408095710524"></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/MySql/">MySql</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/mysql/">mysql</a>
+                    
+                      <a class="hover-with-bg" href="/tags/function/">function</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/04/08/jdbc-study/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">jdbc_study</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/04/04/mysql-study-content/">
+                        <span class="hidden-mobile">mysql_study_content</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="gitalk-container"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#gitalk-container', function() {
+      Fluid.utils.createCssLink('/css/gitalk.css')
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', function() {
+        var options = Object.assign(
+          {"clientID":"e086c91aae8335308d3b","clientSecret":"83104ef0c9423fc74a3350da23fa29464dc09f20","repo":"clannad603.github.io","owner":"clannad603","adminUser":"['clannad603']","language":"zh-CN","perPage":10,"pagerDirection":"last","distractionFreeMode":false,"createIssueManually":true,"proxy":"https://netnr-proxy.cloudno.de/https://github.com/login/oauth/access_token"},
+          {
+            id: 'caadb8fc68c84d1aa831e95460a2894b'
+          }
+        )
+        var gitalk = new Gitalk(options);
+        gitalk.render('gitalk-container');
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
